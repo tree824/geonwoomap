@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_5aba3a8dd4afe02ec9c6435442be80e1 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_5aba3a8dd4afe02ec9c6435442be80e1" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_5aba3a8dd4afe02ec9c6435442be80e1 = L.map(
+                "map_5aba3a8dd4afe02ec9c6435442be80e1",
+                {
+                    center: [37.04691096059023, 127.25828548866393],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 12,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_f0abc450eb05f1e4b6c3bdc8a2be68e8 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_f0abc450eb05f1e4b6c3bdc8a2be68e8.addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+            var marker_cf079d4b5eeeba2770c43fcd891d4465 = L.marker(
+                [35.3822702764433, 129.019454346672],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_9ec1546f450e993ca1d105ec6ce208ac = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9a2ee9bda20398428b52669510dd72c6 = $(`<div id="html_9a2ee9bda20398428b52669510dd72c6" style="width: 100.0%; height: 100.0%;">코렌스</div>`)[0];
+                popup_9ec1546f450e993ca1d105ec6ce208ac.setContent(html_9a2ee9bda20398428b52669510dd72c6);
+            
+        
+
+        marker_cf079d4b5eeeba2770c43fcd891d4465.bindPopup(popup_9ec1546f450e993ca1d105ec6ce208ac)
+        ;
+
+        
+    
+    
+            var marker_a15e4a33d722bfa783080db127daebab = L.marker(
+                [37.2800229864129, 127.119355859066],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_c3c845f05559095e37e3826aba97f19a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e1f2c92dac9d088fd9731d6bf7a840d1 = $(`<div id="html_e1f2c92dac9d088fd9731d6bf7a840d1" style="width: 100.0%; height: 100.0%;">케이퓨얼셀</div>`)[0];
+                popup_c3c845f05559095e37e3826aba97f19a.setContent(html_e1f2c92dac9d088fd9731d6bf7a840d1);
+            
+        
+
+        marker_a15e4a33d722bfa783080db127daebab.bindPopup(popup_c3c845f05559095e37e3826aba97f19a)
+        ;
+
+        
+    
+    
+            var marker_d55fabca3225a74deddb3842dd01a1f5 = L.marker(
+                [35.8235799481409, 128.511104216315],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_f127d7f3048109959cd14a900f0c2541 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_debcfeb4e8111686fb65f61f6d51a9e3 = $(`<div id="html_debcfeb4e8111686fb65f61f6d51a9e3" style="width: 100.0%; height: 100.0%;">디젠</div>`)[0];
+                popup_f127d7f3048109959cd14a900f0c2541.setContent(html_debcfeb4e8111686fb65f61f6d51a9e3);
+            
+        
+
+        marker_d55fabca3225a74deddb3842dd01a1f5.bindPopup(popup_f127d7f3048109959cd14a900f0c2541)
+        ;
+
+        
+    
+    
+            var marker_4563a6704c502854d259ddac49272352 = L.marker(
+                [37.402772477204, 127.108078628783],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_bc727cb8cc678f28358cb7494aef16c7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9e300923c4a8648292f580aa9218a76d = $(`<div id="html_9e300923c4a8648292f580aa9218a76d" style="width: 100.0%; height: 100.0%;">유라코퍼레이션</div>`)[0];
+                popup_bc727cb8cc678f28358cb7494aef16c7.setContent(html_9e300923c4a8648292f580aa9218a76d);
+            
+        
+
+        marker_4563a6704c502854d259ddac49272352.bindPopup(popup_bc727cb8cc678f28358cb7494aef16c7)
+        ;
+
+        
+    
+    
+            var marker_0681dd58bd996ac73f58c77a0a71ce69 = L.marker(
+                [37.3245233740717, 126.780780899102],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_528615decca2c65cc8c1792ac6167799 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9f8bf125c6556789aa2b6f19a60d5f06 = $(`<div id="html_9f8bf125c6556789aa2b6f19a60d5f06" style="width: 100.0%; height: 100.0%;">발레오오토모티브코리아</div>`)[0];
+                popup_528615decca2c65cc8c1792ac6167799.setContent(html_9f8bf125c6556789aa2b6f19a60d5f06);
+            
+        
+
+        marker_0681dd58bd996ac73f58c77a0a71ce69.bindPopup(popup_528615decca2c65cc8c1792ac6167799)
+        ;
+
+        
+    
+    
+            var marker_45bce19f8fe899474e55621bf38317ed = L.marker(
+                [35.288247722746, 128.77464966796],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_7568e6a8c0860eb7082a02017d9c19e2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f239321fdd3964b51016b05b349463f6 = $(`<div id="html_f239321fdd3964b51016b05b349463f6" style="width: 100.0%; height: 100.0%;">유니크</div>`)[0];
+                popup_7568e6a8c0860eb7082a02017d9c19e2.setContent(html_f239321fdd3964b51016b05b349463f6);
+            
+        
+
+        marker_45bce19f8fe899474e55621bf38317ed.bindPopup(popup_7568e6a8c0860eb7082a02017d9c19e2)
+        ;
+
+        
+    
+    
+            var marker_67a268fb3d9c57bcd29430706373b40a = L.marker(
+                [37.2374301151274, 126.984591838204],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_70aa8fb094d63ae89ff1105a2657bf35 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7fbea8f3acc1077f9ea9193e0e367ba2 = $(`<div id="html_7fbea8f3acc1077f9ea9193e0e367ba2" style="width: 100.0%; height: 100.0%;">모베이스전자</div>`)[0];
+                popup_70aa8fb094d63ae89ff1105a2657bf35.setContent(html_7fbea8f3acc1077f9ea9193e0e367ba2);
+            
+        
+
+        marker_67a268fb3d9c57bcd29430706373b40a.bindPopup(popup_70aa8fb094d63ae89ff1105a2657bf35)
+        ;
+
+        
+    
+    
+            var marker_454ea4951d8263757e6038fc52434a84 = L.marker(
+                [37.2938413568957, 127.049384794933],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_98afa12cf65946a333df071dacd3f4a4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_947a91cfe523cd6990c505d847e67d63 = $(`<div id="html_947a91cfe523cd6990c505d847e67d63" style="width: 100.0%; height: 100.0%;">피에이치에이(구 평화정공)</div>`)[0];
+                popup_98afa12cf65946a333df071dacd3f4a4.setContent(html_947a91cfe523cd6990c505d847e67d63);
+            
+        
+
+        marker_454ea4951d8263757e6038fc52434a84.bindPopup(popup_98afa12cf65946a333df071dacd3f4a4)
+        ;
+
+        
+    
+    
+            var marker_a360627c9e2a5c29e18bf7d651e52612 = L.marker(
+                [37.2366953291098, 126.98338626288],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_b7d685f522bba86ba22c52a82bbda770 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a182f7f67ac5eb520d09495f58ea97cc = $(`<div id="html_a182f7f67ac5eb520d09495f58ea97cc" style="width: 100.0%; height: 100.0%;">아이탑스오토모티브(주)</div>`)[0];
+                popup_b7d685f522bba86ba22c52a82bbda770.setContent(html_a182f7f67ac5eb520d09495f58ea97cc);
+            
+        
+
+        marker_a360627c9e2a5c29e18bf7d651e52612.bindPopup(popup_b7d685f522bba86ba22c52a82bbda770)
+        ;
+
+        
+    
+    
+            var marker_391f6156380d657583529bfb564fe573 = L.marker(
+                [35.6789846752146, 128.451408639358],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_e44436becef88c3d2e116ff58b32bdc7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_cb474d34f0be3b1c61003121d8ed93ec = $(`<div id="html_cb474d34f0be3b1c61003121d8ed93ec" style="width: 100.0%; height: 100.0%;">평화발레오</div>`)[0];
+                popup_e44436becef88c3d2e116ff58b32bdc7.setContent(html_cb474d34f0be3b1c61003121d8ed93ec);
+            
+        
+
+        marker_391f6156380d657583529bfb564fe573.bindPopup(popup_e44436becef88c3d2e116ff58b32bdc7)
+        ;
+
+        
+    
+    
+            var marker_0e692b54ef0e7b64e7de11603b17b690 = L.marker(
+                [37.1322506184303, 126.986248396439],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_2eae87f84f8ac29948e31a81f0ff4a34 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_803895515672e1bfa18c1c3c0f70c832 = $(`<div id="html_803895515672e1bfa18c1c3c0f70c832" style="width: 100.0%; height: 100.0%;">모토닉스</div>`)[0];
+                popup_2eae87f84f8ac29948e31a81f0ff4a34.setContent(html_803895515672e1bfa18c1c3c0f70c832);
+            
+        
+
+        marker_0e692b54ef0e7b64e7de11603b17b690.bindPopup(popup_2eae87f84f8ac29948e31a81f0ff4a34)
+        ;
+
+        
+    
+    
+            var marker_2f3647c29972a5eb9780db8410c4af38 = L.marker(
+                [37.4121292354356, 127.095040075648],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_7280bd7ac8c72ec610cebd97bf74abf0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d4a635edadaf71c43e3715f683f2a2c3 = $(`<div id="html_d4a635edadaf71c43e3715f683f2a2c3" style="width: 100.0%; height: 100.0%;">네오펙트</div>`)[0];
+                popup_7280bd7ac8c72ec610cebd97bf74abf0.setContent(html_d4a635edadaf71c43e3715f683f2a2c3);
+            
+        
+
+        marker_2f3647c29972a5eb9780db8410c4af38.bindPopup(popup_7280bd7ac8c72ec610cebd97bf74abf0)
+        ;
+
+        
+    
+    
+            var marker_fe76a5cc52e9a3d77156ff89b935c8e4 = L.marker(
+                [37.0649194998213, 127.424089237956],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_81c6f838617295b08fa34936b2e14968 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c72f0046e0e3d8e5955d763327897170 = $(`<div id="html_c72f0046e0e3d8e5955d763327897170" style="width: 100.0%; height: 100.0%;">두원중공업</div>`)[0];
+                popup_81c6f838617295b08fa34936b2e14968.setContent(html_c72f0046e0e3d8e5955d763327897170);
+            
+        
+
+        marker_fe76a5cc52e9a3d77156ff89b935c8e4.bindPopup(popup_81c6f838617295b08fa34936b2e14968)
+        ;
+
+        
+    
+    
+            var marker_bca70315805a62eb90bb772df29d3dd2 = L.marker(
+                [36.3625387031177, 127.358186220312],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_2eea72f633afc4a54873082f5d1a80e9 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ff085baf95338f06c294ee2dc71bc4fd = $(`<div id="html_ff085baf95338f06c294ee2dc71bc4fd" style="width: 100.0%; height: 100.0%;">에이유</div>`)[0];
+                popup_2eea72f633afc4a54873082f5d1a80e9.setContent(html_ff085baf95338f06c294ee2dc71bc4fd);
+            
+        
+
+        marker_bca70315805a62eb90bb772df29d3dd2.bindPopup(popup_2eea72f633afc4a54873082f5d1a80e9)
+        ;
+
+        
+    
+    
+            var marker_c350e42473803a4d2874ae4251759d63 = L.marker(
+                [37.2217338146075, 127.073736479707],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_b6174db6761a9612cb918b3be41d7046 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_db7b8ef1855ca590c5ca7974bbc45fb3 = $(`<div id="html_db7b8ef1855ca590c5ca7974bbc45fb3" style="width: 100.0%; height: 100.0%;">글로우원</div>`)[0];
+                popup_b6174db6761a9612cb918b3be41d7046.setContent(html_db7b8ef1855ca590c5ca7974bbc45fb3);
+            
+        
+
+        marker_c350e42473803a4d2874ae4251759d63.bindPopup(popup_b6174db6761a9612cb918b3be41d7046)
+        ;
+
+        
+    
+    
+            var marker_7a6f6503974910539c402f0ec411b54a = L.marker(
+                [37.3965465431313, 126.963995060876],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_b1b79d35ada24db5fd47fca849b8d29f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ed2283bed55da8813f710b1ffcd6d6a6 = $(`<div id="html_ed2283bed55da8813f710b1ffcd6d6a6" style="width: 100.0%; height: 100.0%;">세솔테크</div>`)[0];
+                popup_b1b79d35ada24db5fd47fca849b8d29f.setContent(html_ed2283bed55da8813f710b1ffcd6d6a6);
+            
+        
+
+        marker_7a6f6503974910539c402f0ec411b54a.bindPopup(popup_b1b79d35ada24db5fd47fca849b8d29f)
+        ;
+
+        
+    
+    
+            var marker_16c38222f70e172cac87f16f869c6b02 = L.marker(
+                [37.4001662034279, 127.112312371111],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_3b71825a4957870d82e5f130f749a996 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c7bb7a1e41481549e05569b2f16e9425 = $(`<div id="html_c7bb7a1e41481549e05569b2f16e9425" style="width: 100.0%; height: 100.0%;">(주)켐트로닉스</div>`)[0];
+                popup_3b71825a4957870d82e5f130f749a996.setContent(html_c7bb7a1e41481549e05569b2f16e9425);
+            
+        
+
+        marker_16c38222f70e172cac87f16f869c6b02.bindPopup(popup_3b71825a4957870d82e5f130f749a996)
+        ;
+
+        
+    
+    
+            var marker_317eeb868ef406b5c4d19b369487bd20 = L.marker(
+                [37.5656490167105, 126.988142568678],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_a88a75a4e3572de6c924052bf8312b68 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_756c9f3837742c61d0997a99acd0d756 = $(`<div id="html_756c9f3837742c61d0997a99acd0d756" style="width: 100.0%; height: 100.0%;">한솔테크닉스(주)</div>`)[0];
+                popup_a88a75a4e3572de6c924052bf8312b68.setContent(html_756c9f3837742c61d0997a99acd0d756);
+            
+        
+
+        marker_317eeb868ef406b5c4d19b369487bd20.bindPopup(popup_a88a75a4e3572de6c924052bf8312b68)
+        ;
+
+        
+    
+    
+            var marker_604db9bf7098d1853a4171aa662931e9 = L.marker(
+                [36.8778759624631, 126.927084121328],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_e2fa2c818aaa3fa11f324046852c972d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_799213d21a5c2b9096855265cc3494b1 = $(`<div id="html_799213d21a5c2b9096855265cc3494b1" style="width: 100.0%; height: 100.0%;">(주)두원전자</div>`)[0];
+                popup_e2fa2c818aaa3fa11f324046852c972d.setContent(html_799213d21a5c2b9096855265cc3494b1);
+            
+        
+
+        marker_604db9bf7098d1853a4171aa662931e9.bindPopup(popup_e2fa2c818aaa3fa11f324046852c972d)
+        ;
+
+        
+    
+    
+            var marker_52d220081012e19b22c10b648a93c73d = L.marker(
+                [37.3794194529151, 127.117037459562],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_2d430cb45ab5071d114b3804b1aff7df = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2775c18cb9fcff3fdd888512b0ee2231 = $(`<div id="html_2775c18cb9fcff3fdd888512b0ee2231" style="width: 100.0%; height: 100.0%;">모트렉스</div>`)[0];
+                popup_2d430cb45ab5071d114b3804b1aff7df.setContent(html_2775c18cb9fcff3fdd888512b0ee2231);
+            
+        
+
+        marker_52d220081012e19b22c10b648a93c73d.bindPopup(popup_2d430cb45ab5071d114b3804b1aff7df)
+        ;
+
+        
+    
+    
+            var marker_e3fd992d97df98926da27d8962c5a815 = L.marker(
+                [37.4067134067601, 127.087301860142],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_4965829bc81083bb2aa6ddaf05e35108 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f0a9e8fd932be9b2ddeba6f502d68202 = $(`<div id="html_f0a9e8fd932be9b2ddeba6f502d68202" style="width: 100.0%; height: 100.0%;">(주)텔레칩스</div>`)[0];
+                popup_4965829bc81083bb2aa6ddaf05e35108.setContent(html_f0a9e8fd932be9b2ddeba6f502d68202);
+            
+        
+
+        marker_e3fd992d97df98926da27d8962c5a815.bindPopup(popup_4965829bc81083bb2aa6ddaf05e35108)
+        ;
+
+        
+    
+    
+            var marker_b236cae79708d5d6c3d2b9707cbfdf84 = L.marker(
+                [37.4004659332759, 127.106812648944],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_1a2938d77a27b50255a2906f8f1d4a6d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a7e4947b18d583c3e9d99f40f4166a7a = $(`<div id="html_a7e4947b18d583c3e9d99f40f4166a7a" style="width: 100.0%; height: 100.0%;">(주)넥스트칩</div>`)[0];
+                popup_1a2938d77a27b50255a2906f8f1d4a6d.setContent(html_a7e4947b18d583c3e9d99f40f4166a7a);
+            
+        
+
+        marker_b236cae79708d5d6c3d2b9707cbfdf84.bindPopup(popup_1a2938d77a27b50255a2906f8f1d4a6d)
+        ;
+
+        
+    
+    
+            var marker_676f5c0525de5ddc0db1f36c3e072941 = L.marker(
+                [37.3522338304385, 126.958696447425],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_910f9334b42ad0ac6c95e0f6d8aa821a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e29d5c9210ddc06cf9020dff68fc4d71 = $(`<div id="html_e29d5c9210ddc06cf9020dff68fc4d71" style="width: 100.0%; height: 100.0%;">현대케피코</div>`)[0];
+                popup_910f9334b42ad0ac6c95e0f6d8aa821a.setContent(html_e29d5c9210ddc06cf9020dff68fc4d71);
+            
+        
+
+        marker_676f5c0525de5ddc0db1f36c3e072941.bindPopup(popup_910f9334b42ad0ac6c95e0f6d8aa821a)
+        ;
+
+        
+    
+    
+            var marker_6b208a26cced57688dd271c110f62da5 = L.marker(
+                [37.4034931739961, 127.101608628993],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_d0fdfb6280f431eb5f8ebd253121bbf4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_161fe1d4fb81774979331ac79e1c2eda = $(`<div id="html_161fe1d4fb81774979331ac79e1c2eda" style="width: 100.0%; height: 100.0%;">사피온코리아</div>`)[0];
+                popup_d0fdfb6280f431eb5f8ebd253121bbf4.setContent(html_161fe1d4fb81774979331ac79e1c2eda);
+            
+        
+
+        marker_6b208a26cced57688dd271c110f62da5.bindPopup(popup_d0fdfb6280f431eb5f8ebd253121bbf4)
+        ;
+
+        
+    
+    
+            var marker_52f0faaedfd246c83e17835852ae5e76 = L.marker(
+                [37.5537495904601, 126.642609958198],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_6ee0634443e27414d22c3ef7ada78175 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_61ce908be651ee8f52d2de4af8774415 = $(`<div id="html_61ce908be651ee8f52d2de4af8774415" style="width: 100.0%; height: 100.0%;">엘지마그나이파워트레인</div>`)[0];
+                popup_6ee0634443e27414d22c3ef7ada78175.setContent(html_61ce908be651ee8f52d2de4af8774415);
+            
+        
+
+        marker_52f0faaedfd246c83e17835852ae5e76.bindPopup(popup_6ee0634443e27414d22c3ef7ada78175)
+        ;
+
+        
+    
+    
+            var marker_258bc39e3cb219f2bd406d6f40365fac = L.marker(
+                [37.4802275551346, 126.881027516845],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_edb586248fbe5740d249e4303e7b7280 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9ff16157733420bde5bd10b7b6595e51 = $(`<div id="html_9ff16157733420bde5bd10b7b6595e51" style="width: 100.0%; height: 100.0%;">아이모스시스템㈜</div>`)[0];
+                popup_edb586248fbe5740d249e4303e7b7280.setContent(html_9ff16157733420bde5bd10b7b6595e51);
+            
+        
+
+        marker_258bc39e3cb219f2bd406d6f40365fac.bindPopup(popup_edb586248fbe5740d249e4303e7b7280)
+        ;
+
+        
+    
+    
+            var marker_9f6b641e73f99d8eb41bbff90bbece0b = L.marker(
+                [36.9156166380674, 127.058786706108],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_7828e03e439c0f9f94fb557f4da69719 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_263edb225ceceeb9d56b40b0b429f752 = $(`<div id="html_263edb225ceceeb9d56b40b0b429f752" style="width: 100.0%; height: 100.0%;">(주)니프코 코리아</div>`)[0];
+                popup_7828e03e439c0f9f94fb557f4da69719.setContent(html_263edb225ceceeb9d56b40b0b429f752);
+            
+        
+
+        marker_9f6b641e73f99d8eb41bbff90bbece0b.bindPopup(popup_7828e03e439c0f9f94fb557f4da69719)
+        ;
+
+        
+    
+    
+            var marker_ce7894f72f760c4cdde37d4fccde96ef = L.marker(
+                [36.4371535334572, 127.408797102595],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_e5f7ad45d531a22251cdad64bc2c1cc9 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2838396c99c747e2b843b7014b219c78 = $(`<div id="html_2838396c99c747e2b843b7014b219c78" style="width: 100.0%; height: 100.0%;">한온시스템(주)</div>`)[0];
+                popup_e5f7ad45d531a22251cdad64bc2c1cc9.setContent(html_2838396c99c747e2b843b7014b219c78);
+            
+        
+
+        marker_ce7894f72f760c4cdde37d4fccde96ef.bindPopup(popup_e5f7ad45d531a22251cdad64bc2c1cc9)
+        ;
+
+        
+    
+    
+            var marker_680f715ae373c8b5b3a309be618b4c00 = L.marker(
+                [37.131877776031, 126.986397241092],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_04c01cf6ee1875623f17ef25fed64c2f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4fe17cfe951ffa1ab3a481339980d246 = $(`<div id="html_4fe17cfe951ffa1ab3a481339980d246" style="width: 100.0%; height: 100.0%;">주)모토텍</div>`)[0];
+                popup_04c01cf6ee1875623f17ef25fed64c2f.setContent(html_4fe17cfe951ffa1ab3a481339980d246);
+            
+        
+
+        marker_680f715ae373c8b5b3a309be618b4c00.bindPopup(popup_04c01cf6ee1875623f17ef25fed64c2f)
+        ;
+
+        
+    
+    
+            var marker_bcc39a4a745b7f39114b003992883ff4 = L.marker(
+                [37.4018832825761, 126.966726268814],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_edcf5f24900dc58df75d33c6a764c9d0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_02ae4b3d79b515f5e1f32de59c90f729 = $(`<div id="html_02ae4b3d79b515f5e1f32de59c90f729" style="width: 100.0%; height: 100.0%;">다믈파워반도체(유)</div>`)[0];
+                popup_edcf5f24900dc58df75d33c6a764c9d0.setContent(html_02ae4b3d79b515f5e1f32de59c90f729);
+            
+        
+
+        marker_bcc39a4a745b7f39114b003992883ff4.bindPopup(popup_edcf5f24900dc58df75d33c6a764c9d0)
+        ;
+
+        
+    
+    
+            var marker_d8b4964d2f803611447f0274f45a1455 = L.marker(
+                [37.4052305806436, 127.101119203946],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_4ab576dcb490ea28ee7c8da315113ac1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7a70c497cbe828f5392dfd32751f7a18 = $(`<div id="html_7a70c497cbe828f5392dfd32751f7a18" style="width: 100.0%; height: 100.0%;">보스반도체</div>`)[0];
+                popup_4ab576dcb490ea28ee7c8da315113ac1.setContent(html_7a70c497cbe828f5392dfd32751f7a18);
+            
+        
+
+        marker_d8b4964d2f803611447f0274f45a1455.bindPopup(popup_4ab576dcb490ea28ee7c8da315113ac1)
+        ;
+
+        
+    
+    
+            var marker_b9806330c55871cee7db064191aca338 = L.marker(
+                [35.7336524002977, 128.450276670243],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_500dec88d74b5d4c646734823466df50 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4372adaa053e850318a23380f9cd9b56 = $(`<div id="html_4372adaa053e850318a23380f9cd9b56" style="width: 100.0%; height: 100.0%;">에스트라오토모티브시스템(주)</div>`)[0];
+                popup_500dec88d74b5d4c646734823466df50.setContent(html_4372adaa053e850318a23380f9cd9b56);
+            
+        
+
+        marker_b9806330c55871cee7db064191aca338.bindPopup(popup_500dec88d74b5d4c646734823466df50)
+        ;
+
+        
+    
+    
+            var marker_425e260c6ca0287e0b0c3cfab79d52d7 = L.marker(
+                [37.2053445813477, 127.103122786659],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_ed47c3e2172db3ff0359eb9f78005e06 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8bd674dde723beab67e873290f93f7f2 = $(`<div id="html_8bd674dde723beab67e873290f93f7f2" style="width: 100.0%; height: 100.0%;">동아전기부품(주)</div>`)[0];
+                popup_ed47c3e2172db3ff0359eb9f78005e06.setContent(html_8bd674dde723beab67e873290f93f7f2);
+            
+        
+
+        marker_425e260c6ca0287e0b0c3cfab79d52d7.bindPopup(popup_ed47c3e2172db3ff0359eb9f78005e06)
+        ;
+
+        
+    
+    
+            var marker_301cab697a1726054a7d2eca338ea4e4 = L.marker(
+                [37.3003363600416, 127.071799505702],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_b48b245a90ac3891c562c5d2479a1894 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_24eb99705d36509c57aef31676b71422 = $(`<div id="html_24eb99705d36509c57aef31676b71422" style="width: 100.0%; height: 100.0%;">(주)세코닉스</div>`)[0];
+                popup_b48b245a90ac3891c562c5d2479a1894.setContent(html_24eb99705d36509c57aef31676b71422);
+            
+        
+
+        marker_301cab697a1726054a7d2eca338ea4e4.bindPopup(popup_b48b245a90ac3891c562c5d2479a1894)
+        ;
+
+        
+    
+    
+            var marker_45160c1957b730d712a2b6a074486ab3 = L.marker(
+                [37.563217323232, 126.836692616706],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_e5bf8b39f72e1d4fa4bc1bee7a4f48e0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2b0986ea9e6b6282795311268a6e0f20 = $(`<div id="html_2b0986ea9e6b6282795311268a6e0f20" style="width: 100.0%; height: 100.0%;">센서텍(주)</div>`)[0];
+                popup_e5bf8b39f72e1d4fa4bc1bee7a4f48e0.setContent(html_2b0986ea9e6b6282795311268a6e0f20);
+            
+        
+
+        marker_45160c1957b730d712a2b6a074486ab3.bindPopup(popup_e5bf8b39f72e1d4fa4bc1bee7a4f48e0)
+        ;
+
+        
+    
+    
+            var marker_2299146db407687a8d0a2480871a199e = L.marker(
+                [37.5423850273981, 127.048622218395],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_0a5dc01387ddd7b0fc899226add739bf = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_35c935103da3d784e34877e8775a722f = $(`<div id="html_35c935103da3d784e34877e8775a722f" style="width: 100.0%; height: 100.0%;">드림에이스</div>`)[0];
+                popup_0a5dc01387ddd7b0fc899226add739bf.setContent(html_35c935103da3d784e34877e8775a722f);
+            
+        
+
+        marker_2299146db407687a8d0a2480871a199e.bindPopup(popup_0a5dc01387ddd7b0fc899226add739bf)
+        ;
+
+        
+    
+    
+            var marker_8256a006e341bf06148a58bc1bf7d98b = L.marker(
+                [37.507001535999, 127.058656127092],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_f580edc61da83a5c6ed4aa3e0679b015 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c5928661ecad64752dc60d4e14aa5cad = $(`<div id="html_c5928661ecad64752dc60d4e14aa5cad" style="width: 100.0%; height: 100.0%;">현대오토에버(주)</div>`)[0];
+                popup_f580edc61da83a5c6ed4aa3e0679b015.setContent(html_c5928661ecad64752dc60d4e14aa5cad);
+            
+        
+
+        marker_8256a006e341bf06148a58bc1bf7d98b.bindPopup(popup_f580edc61da83a5c6ed4aa3e0679b015)
+        ;
+
+        
+    
+    
+            var marker_04872919ca11fc06fbb019185e204772 = L.marker(
+                [37.2804366618453, 127.117727916439],
+                {}
+            ).addTo(map_5aba3a8dd4afe02ec9c6435442be80e1);
+        
+    
+        var popup_3d74989f795bf21f016ff93c5e60a1f6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_994bf41bb884c774d7e44b6161c047fc = $(`<div id="html_994bf41bb884c774d7e44b6161c047fc" style="width: 100.0%; height: 100.0%;">지티시스템(주)</div>`)[0];
+                popup_3d74989f795bf21f016ff93c5e60a1f6.setContent(html_994bf41bb884c774d7e44b6161c047fc);
+            
+        
+
+        marker_04872919ca11fc06fbb019185e204772.bindPopup(popup_3d74989f795bf21f016ff93c5e60a1f6)
+        ;
+
+        
+    
+</script>
+</html>
