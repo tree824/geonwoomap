@@ -1,5 +1,5 @@
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <title>건우솔루션 DB 업체 정보 지도</title>
@@ -118,4 +118,148 @@
         }
     </script>
 </body>
+</html> -->
+
+
+
+<!-- *****-->
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>건우솔루션 DB 업체 정보 지도</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script>
+        L_NO_TOUCH = false;
+        L_DISABLE_3D = false;
+    </script>
+    <style>
+        html, body {width: 100%; height: 100%; margin: 0; padding: 0;}
+        #map {position: absolute; top: 0; bottom: 0; right: 0; left: 0;}
+        #map { height: 90vh; }
+        #search { position: absolute; top: 10px; left: 50px; z-index: 1000; background: white; padding: 5px; border-radius: 3px; }
+        #results { position: absolute; top: 60px; left: 50px; z-index: 1000; background: white; padding: 10px; border-radius: 3px; max-height: 200px; width: 300px; overflow-y: auto; } /* <span style="background-color: #FFCCCC;">추가된 부분</span> */
+        .result-item { cursor: pointer; padding: 5px; border-bottom: 1px solid #ddd; } /* <span style="background-color: #FFCCCC;">추가된 부분</span> */
+        .result-item:hover { background-color: #f0f0f0; } /* <span style="background-color: #FFCCCC;">추가된 부분</span> */
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+        #map_0ae8521e9893737593c662994358d45a {
+            position: relative;
+            width: 100.0%;
+            height: 100.0%;
+            left: 0.0%;
+            top: 0.0%;
+        }
+        .leaflet-container { font-size: 1rem; }
+    </style>
+</head>
+<body>
+    <div id="search">
+        <input type="text" id="searchBox" placeholder="업체명">
+        <button onclick="searchName()">Search</button>
+    </div>
+    <div id="results"></div> <!-- <span style="background-color: #FFCCCC;">추가된 부분</span> -->
+    <div id="map"></div>
+    <div class="folium-map" id="map_0ae8521e9893737593c662994358d45a"></div>
+
+    <script>
+        var map_0ae8521e9893737593c662994358d45a = L.map(
+            "map_0ae8521e9893737593c662994358d45a",
+            {
+                center: [37.06255530560053, 127.23265275128199],
+                crs: L.CRS.EPSG3857,
+                zoom: 8,
+                zoomControl: true,
+                preferCanvas: false,
+            }
+        );
+
+        var tile_layer_4540d18502d966e228b3b7d3daa66eda = L.tileLayer(
+            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            {
+                "attribution": "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors",
+                "detectRetina": false,
+                "maxNativeZoom": 19,
+                "maxZoom": 19,
+                "minZoom": 0,
+                "noWrap": false,
+                "opacity": 1,
+                "subdomains": "abc",
+                "tms": false
+            }
+        );
+        
+        tile_layer_4540d18502d966e228b3b7d3daa66eda.addTo(map_0ae8521e9893737593c662994358d45a);
+
+        var markersData = [{'coords': [35.3822702764433, 129.019454346672], 'popup': '<a href="https://www.notion.so/2368494afbbc406a905c26baccf139bd?pvs=4" target="_blank">코렌스</a>', 'name': '코렌스'}, {'coords': [37.2800229864129, 127.119355859066], 'popup': '<a href="https://www.notion.so/d78a67dc38a54e41a6e599d5093fe766?pvs=4" target="_blank">케이퓨얼셀</a>', 'name': '케이퓨얼셀'}, {'coords': [35.8235799481409, 128.511104216315], 'popup': '<a href="https://www.notion.so/d8740d014c914c688973c383d6d2a994?pvs=4" target="_blank">디젠</a>', 'name': '디젠'}, {'coords': [37.402772477204, 127.108078628783], 'popup': '<a href="https://www.notion.so/cc718c849ebf47b5b06a935134633d12?pvs=4" target="_blank">유라코퍼레이션</a>', 'name': '유라코퍼레이션'}, {'coords': [37.3245233740717, 126.780780899102], 'popup': '<a href="https://www.notion.so/ee444cfce47b475dab0f4ee6331e6318?pvs=4" target="_blank">발레오오토모티브코리아</a>', 'name': '발레오오토모티브코리아'}, {'coords': [35.288247722746, 128.77464966796], 'popup': '<a href="https://www.notion.so/7736e953865d450d8e345ff35039d56f?pvs=4" target="_blank">유니크</a>', 'name': '유니크'}, {'coords': [37.2374301151274, 126.984591838204], 'popup': '<a href="https://www.notion.so/961b07ef010543c1b2ad3986d9705767?pvs=4" target="_blank">모베이스전자</a>', 'name': '모베이스전자'}, {'coords': [37.2938413568957, 127.049384794933], 'popup': '<a href="https://www.notion.so/461c372bddf34840bc2ec763c08f9e62?pvs=4" target="_blank">피에이치에이(구 평화정공)</a>', 'name': '피에이치에이(구 평화정공)'}, {'coords': [37.2366953291098, 126.98338626288], 'popup': '<a href="https://www.notion.so/b4e2a21b980345ee86738bde8dcd36b0?pvs=4" target="_blank">아이탑스오토모티브(주)</a>', 'name': '아이탑스오토모티브(주)'}, {'coords': [35.6789846752146, 128.451408639358], 'popup': '<a href="https://www.notion.so/f537ee97c6234719991afe12ee6e6c96?pvs=4" target="_blank">평화발레오</a>', 'name': '평화발레오'}, {'coords': [37.1322506184303, 126.986248396439], 'popup': '<a href="https://www.notion.so/6eaff73785c6407c9ff4175973a367aa?pvs=4" target="_blank">모토닉스</a>', 'name': '모토닉스'}, {'coords': [37.4121292354356, 127.095040075648], 'popup': '<a href="https://www.notion.so/ff43d47557a244ddaf2f6373e2d3f3f2?pvs=4" target="_blank">네오펙트</a>', 'name': '네오펙트'}, {'coords': [37.0649194998213, 127.424089237956], 'popup': '<a href="https://www.notion.so/7453bc2df6894481b0c49e7617c7e9d7?pvs=4" target="_blank">두원중공업</a>', 'name': '두원중공업'}, {'coords': [36.3625387031177, 127.358186220312], 'popup': '<a href="https://www.notion.so/4a67c576d98e4b619478b484244ac4ea?pvs=4" target="_blank">에이유</a>', 'name': '에이유'}, {'coords': [37.2217338146075, 127.073736479707], 'popup': '<a href="https://www.notion.so/570869dce8e3415aa5532124b989a5e5?pvs=4" target="_blank">글로우원</a>', 'name': '글로우원'}, {'coords': [37.3965465431313, 126.963995060876], 'popup': '<a href="https://www.notion.so/c5cb2c0c64e24812ae6ae07e76080495?pvs=4" target="_blank">세솔테크</a>', 'name': '세솔테크'}, {'coords': [37.4001662034279, 127.112312371111], 'popup': '<a href="https://www.notion.so/d498d519cf3e4a41abd053624b21b652?pvs=4" target="_blank">(주)켐트로닉스</a>', 'name': '(주)켐트로닉스'}, {'coords': [37.5656490167105, 126.988142568678], 'popup': '<a href="https://www.notion.so/af9624f8475d4570aca946a82e431b82?pvs=4" target="_blank">한솔테크닉스(주)</a>', 'name': '한솔테크닉스(주)'}, {'coords': [36.8778759624631, 126.927084121328], 'popup': '<a href="https://www.notion.so/9fca3202033040d0a17d441bf1a9931a?pvs=4" target="_blank">(주)두원전자</a>', 'name': '(주)두원전자'}, {'coords': [37.3794194529151, 127.117037459562], 'popup': '<a href="https://www.notion.so/ec5cece2be924730a0dde4ac4ddbfdd8?pvs=4" target="_blank">모트렉스</a>', 'name': '모트렉스'}, {'coords': [37.4067134067601, 127.087301860142], 'popup': '<a href="https://www.notion.so/c09f18b105964e64bfa6eea4448d46c0?pvs=4" target="_blank">(주)텔레칩스</a>', 'name': '(주)텔레칩스'}, {'coords': [37.4004659332759, 127.106812648944], 'popup': '<a href="https://www.notion.so/a0781917a543444a9384f320f2410125?pvs=4" target="_blank">(주)넥스트칩</a>', 'name': '(주)넥스트칩'}, {'coords': [37.3522338304385, 126.958696447425], 'popup': '<a href="https://www.notion.so/c9dfc277825f460cab42016f51ca1020?pvs=4" target="_blank">현대케피코</a>', 'name': '현대케피코'}, {'coords': [37.4034931739961, 127.101608628993], 'popup': '<a href="https://www.notion.so/571b31d75b8a430bacc4222c610f4d6f?pvs=4" target="_blank">사피온코리아</a>', 'name': '사피온코리아'}, {'coords': [37.5537495904601, 126.642609958198], 'popup': '<a href="https://www.notion.so/403fae40bca845288498dfe0ba72f521?pvs=4" target="_blank">엘지마그나이파워트레인</a>', 'name': '엘지마그나이파워트레인'}, {'coords': [37.4802275551346, 126.881027516845], 'popup': '<a href="https://www.notion.so/d2edf011a0a54ac788067e6259007e8b?pvs=4" target="_blank">아이모스시스템㈜</a>', 'name': '아이모스시스템㈜'}, {'coords': [36.9156166380674, 127.058786706108], 'popup': '<a href="https://www.notion.so/ea892ef517df4b22b8c17dbcd762e588?pvs=4" target="_blank">(주)니프코 코리아</a>', 'name': '(주)니프코 코리아'}, {'coords': [36.4371535334572, 127.408797102595], 'popup': '<a href="https://www.notion.so/bdb178f3d1c342d49b4f14d2a645eb25?pvs=4" target="_blank">한온시스템(주)</a>', 'name': '한온시스템(주)'}, {'coords': [37.131877776031, 126.986397241092], 'popup': '<a href="https://www.notion.so/8ee5dbde648a450db06b3f8ad6ade60d?pvs=4" target="_blank">주)모토텍</a>', 'name': '주)모토텍'}, {'coords': [37.4018832825761, 126.966726268814], 'popup': '<a href="https://www.notion.so/83dea7cf685a415b9aae1c43a6c61c35?pvs=4" target="_blank">다믈파워반도체(유)</a>', 'name': '다믈파워반도체(유)'}, {'coords': [37.4052305806436, 127.101119203946], 'popup': '<a href="https://www.notion.so/10cf759a3e3f429a9afdbc7b3058a3cd?pvs=4" target="_blank">보스반도체</a>', 'name': '보스반도체'}, {'coords': [35.7336524002977, 128.450276670243], 'popup': '<a href="https://www.notion.so/b95ad6274eac49d9967c49e9403cd18e?pvs=4" target="_blank">에스트라오토모티브시스템(주)</a>', 'name': '에스트라오토모티브시스템(주)'}, {'coords': [37.2053445813477, 127.103122786659], 'popup': '<a href="https://www.notion.so/3de6b3badff542ada0e936a6160d9788?pvs=4" target="_blank">동아전기부품(주)</a>', 'name': '동아전기부품(주)'}, {'coords': [37.3003363600416, 127.071799505702], 'popup': '<a href="https://www.notion.so/182fa075dbea4d03bfe2550fab7f332c?pvs=4" target="_blank">(주)세코닉스</a>', 'name': '(주)세코닉스'}, {'coords': [37.563217323232, 126.836692616706], 'popup': '<a href="https://www.notion.so/d44f7d05249b4cad944562090c9a4f9f?pvs=4" target="_blank">센서텍(주)</a>', 'name': '센서텍(주)'}, {'coords': [37.5423850273981, 127.048622218395], 'popup': '<a href="https://www.notion.so/19c5b99dfc064e95aead5421a26612dc?pvs=4" target="_blank">드림에이스</a>', 'name': '드림에이스'}, {'coords': [37.507001535999, 127.058656127092], 'popup': '<a href="https://www.notion.so/2ab60b737d214f13aebc28ff1857e334?pvs=4" target="_blank">현대오토에버(주)</a>', 'name': '현대오토에버(주)'}, {'coords': [37.2804366618453, 127.117727916439], 'popup': '<a href="https://www.notion.so/178255580b7c46dd932f73a8166721c9?pvs=4" target="_blank">지티시스템(주)</a>', 'name': '지티시스템(주)'}, {'coords': [37.32367, 126.9523], 'popup': '<a href="https://www.notion.so/1ef20d9c981340f6a73def9778a79ddc?pvs=4" target="_blank">현대위아㈜</a>', 'name': '현대위아㈜'}, {'coords': [37.4761, 126.8801], 'popup': '<a href="https://www.notion.so/b1ac9b12a38d4eb793c50a4e7e0522b4?pvs=4" target="_blank">(주)세온이앤에스</a>', 'name': '(주)세온이앤에스'}, {'coords': [37.4853, 127.0366], 'popup': '<a href="https://www.notion.so/LX-ff01de496afb46be874713e9b3be63b2?pvs=4" target="_blank">LX세미콘</a>', 'name': 'LX세미콘'}, {'coords': [37.4768, 126.9765], 'popup': '<a href="https://www.notion.so/5a33622be27a4edd92f50aaa9d53a3ce?pvs=4" target="_blank">(주)네오티스</a>', 'name': '(주)네오티스'}, {'coords': [37.1821, 127.0877], 'popup': '<a href="https://www.notion.so/5da956914bb64cffa0ce2591cd8f4aa0?pvs=4" target="_blank">덕일산업</a>', 'name': '덕일산업'}, {'coords': [37.2495, 127.1308], 'popup': '<a href="https://www.notion.so/75e55712d1b941c2b255575f7c55cc2a?pvs=4" target="_blank">우리산업홀딩스(주)</a>', 'name': '우리산업홀딩스(주)'}, {'coords': [36.7376, 127.2681], 'popup': '<a href="https://www.notion.so/a119e21a451049a69d53a7f5ea44d2e4?pvs=4" target="_blank">피에이치에이에차(유)</a>', 'name': '피에이치에이에차(유)'}, {'coords': [37.3611, 126.6531], 'popup': '<a href="https://www.notion.so/ec687d855bee4fcca1b4fbf6817f0cc6?pvs=4" target="_blank">대동도어</a>', 'name': '대동도어'}, {'coords': [37.525, 126.9253], 'popup': '<a href="https://www.notion.so/04385f5a47914e9e80c5318cb2e8b9cf?pvs=4" target="_blank">럭스소프트코리아(유)</a>', 'name': '럭스소프트코리아(유)'}, {'coords': [35.6795, 128.4598], 'popup': '<a href="https://www.notion.so/4c7e72355b02494991bb8a94dd1cf517?pvs=4" target="_blank">상신브레이크(주)</a>', 'name': '상신브레이크(주)'}, {'coords': [36.8669, 127.0317], 'popup': '<a href="https://www.notion.so/61713b1438824a98a24ee76ff1454ecf?pvs=4" target="_blank">두원공조</a>', 'name': '두원공조'}, {'coords': [37.3791, 126.6388], 'popup': '<a href="https://www.notion.so/715212f6c64141f0bba232800d66bec7?pvs=4" target="_blank">에이치엘클레무브</a>', 'name': '에이치엘클레무브'}, {'coords': [35.8679, 128.8226], 'popup': '<a href="https://www.notion.so/eb3fdedd6ade4a9c9ac9de5c963b1a78?pvs=4" target="_blank">에스엘</a>', 'name': '에스엘'}, {'coords': [36.9553, 126.8553], 'popup': '<a href="https://www.notion.so/87df2a65e21d4b7f8ced539eb469ae0d?pvs=4" target="_blank">에이치엘만도(주)</a>', 'name': '에이치엘만도(주)'}, {'coords': [37.5651, 126.987], 'popup': '<a href="https://www.notion.so/eeeeaf64f32c4224abccd47c47e6a1b7?pvs=4" target="_blank">티맵모빌리티</a>', 'name': '티맵모빌리티'}, {'coords': [37.4644, 127.0427], 'popup': '<a href="https://www.notion.so/2bd689c96f9643fcb802b20d7a74df3a?pvs=4" target="_blank">현대자동차(주)</a>', 'name': '현대자동차(주)'}];
+
+        var markers = [];
+
+        markersData.forEach(function(markerData) {
+            var marker = L.AwesomeMarkers.icon({
+                icon: 'info-sign',
+                markerColor: 'blue'
+            });
+
+            var leafletMarker = L.marker(markerData.coords, {icon: marker})
+                .bindPopup(markerData.popup)
+                .addTo(map_0ae8521e9893737593c662994358d45a);
+
+            leafletMarker.getElement().setAttribute('data-popup-text', markerData.popup);
+            leafletMarker.getElement().setAttribute('data-name', markerData.name.toLowerCase());
+
+            markers.push(leafletMarker);
+        });
+
+        function searchName() {
+            var input = document.getElementById('searchBox').value.toLowerCase();
+            var resultsContainer = document.getElementById('results'); /* <span style="background-color: #FFCCCC;">추가된 부분</span> */
+            resultsContainer.innerHTML = ''; // Clear previous results /* <span style="background-color: #FFCCCC;">추가된 부분</span> */
+
+            markers.forEach(function(marker) {
+                var markerElement = marker.getElement();
+                var markerName = markerElement.getAttribute('data-name');
+
+                if (markerName.includes(input)) {
+                    var resultItem = document.createElement('div'); /* <span style="background-color: #FFCCCC;">추가된 부분</span> */
+                    resultItem.className = 'result-item'; /* <span style="background-color: #FFCCCC;">추가된 부분</span> */
+                    resultItem.innerHTML = markerName; /* <span style="background-color: #FFCCCC;">추가된 부분</span> */
+                    resultItem.onclick = function() { /* <span style="background-color: #FFCCCC;">추가된 부분</span> */
+                        map_0ae8521e9893737593c662994358d45a.setView(marker.getLatLng(), 15); /* <span style="background-color: #FFCCCC;">추가된 부분</span> */
+                        marker.openPopup(); /* <span style="background-color: #FFCCCC;">추가된 부분</span> */
+                    };
+                    resultsContainer.appendChild(resultItem); /* <span style="background-color: #FFCCCC;">추가된 부분</span> */
+
+                    markerElement.style.display = 'block';
+                    marker.setIcon(L.AwesomeMarkers.icon({
+                        icon: 'info-sign',
+                        markerColor: 'orange'
+                    }));
+                } else {
+                    markerElement.style.display = 'block';
+                    marker.setIcon(L.AwesomeMarkers.icon({
+                        icon: 'info-sign',
+                        markerColor: 'blue'
+                    }));
+                }
+            });
+        }
+    </script>
+</body>
 </html>
+
