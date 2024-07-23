@@ -1,19 +1,16 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>건우솔루션 DB 업체 정보 지도</title>
+    
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <script>
-        L_NO_TOUCH = false;
-        L_DISABLE_3D = false;
-    </script>
-    <style>
-        html, body {width: 100%; height: 100%; margin: 0; padding: 0;}
-        #map {position: absolute; top: 0; bottom: 0; right: 0; left: 0;}
-        #map { height: 90vh; }
-        #search { position: absolute; top: 10px; left: 50px; z-index: 1000; background: white; padding: 5px; border-radius: 3px; } /* left를 조정하여 검색창의 위치를 변경 */
-    </style>
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -24,98 +21,2914 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <style>
-        #map_0ae8521e9893737593c662994358d45a {
-            position: relative;
-            width: 100.0%;
-            height: 100.0%;
-            left: 0.0%;
-            top: 0.0%;
-        }
-        .leaflet-container { font-size: 1rem; }
-    </style>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_358d7f992864203232927bb47de14da2 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
 </head>
 <body>
-    <div id="search">
-        <input type="text" id="searchBox" placeholder="업체명">
-        <button onclick="searchName()">Search</button>
-    </div>
-    <div id="map"></div>
-    <div class="folium-map" id="map_0ae8521e9893737593c662994358d45a"></div>
-
-    <script>
-        var map_0ae8521e9893737593c662994358d45a = L.map(
-            "map_0ae8521e9893737593c662994358d45a",
-            {
-                center: [36.76525157285824, 127.48381735904638],
-                crs: L.CRS.EPSG3857,
-                zoom: 8,
-                zoomControl: true,
-                preferCanvas: false,
-            }
-        );
-
-        var tile_layer_4540d18502d966e228b3b7d3daa66eda = L.tileLayer(
-            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-            {
-                "attribution": "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors",
-                "detectRetina": false,
-                "maxNativeZoom": 19,
-                "maxZoom": 19,
-                "minZoom": 0,
-                "noWrap": false,
-                "opacity": 1,
-                "subdomains": "abc",
-                "tms": false
-            }
-        );
-        
-        tile_layer_4540d18502d966e228b3b7d3daa66eda.addTo(map_0ae8521e9893737593c662994358d45a);
-
-        var markersData = [{'coords': [37.400428833291, 127.110224732629], 'popup': '<a href="https://www.notion.so/30342795801348e2a773a12e174537ae" target="_blank">콘티넨탈오토모티브코리아</a>', 'name': '콘티넨탈오토모티브코리아'}, {'coords': [35.1589351781298, 128.551555448097], 'popup': '<a href="https://www.notion.so/b8b26ee2d39f4f8b8e737a4c40f129d2" target="_blank">덴소코리아(주)</a>', 'name': '덴소코리아(주)'}, {'coords': [36.4420819879059, 127.403364126109], 'popup': '<a href="https://www.notion.so/e7111cc2999a4b7b8260036636a34895" target="_blank">로버트보쉬코리아</a>', 'name': '로버트보쉬코리아'}, {'coords': [35.3822702764433, 129.019454346672], 'popup': '<a href="https://www.notion.so/2368494afbbc406a905c26baccf139bd" target="_blank">코렌스</a>', 'name': '코렌스'}, {'coords': [37.2800229864129, 127.119355859066], 'popup': '<a href="https://www.notion.so/d78a67dc38a54e41a6e599d5093fe766" target="_blank">케이퓨얼셀</a>', 'name': '케이퓨얼셀'}, {'coords': [35.8235799481409, 128.511104216315], 'popup': '<a href="https://www.notion.so/d8740d014c914c688973c383d6d2a994" target="_blank">디젠</a>', 'name': '디젠'}, {'coords': [37.402772477204, 127.108078628783], 'popup': '<a href="https://www.notion.so/cc718c849ebf47b5b06a935134633d12?pvs=25" target="_blank">유라코퍼레이션</a>', 'name': '유라코퍼레이션'}, {'coords': [37.3245233740717, 126.780780899102], 'popup': '<a href="https://www.notion.so/ee444cfce47b475dab0f4ee6331e6318" target="_blank">발레오오토모티브코리아</a>', 'name': '발레오오토모티브코리아'}, {'coords': [35.288247722746, 128.77464966796], 'popup': '<a href="https://www.notion.so/7736e953865d450d8e345ff35039d56f" target="_blank">유니크</a>', 'name': '유니크'}, {'coords': [37.2374301151274, 126.984591838204], 'popup': '<a href="https://www.notion.so/961b07ef010543c1b2ad3986d9705767" target="_blank">모베이스전자</a>', 'name': '모베이스전자'}, {'coords': [37.2938413568957, 127.049384794933], 'popup': '<a href="https://www.notion.so/461c372bddf34840bc2ec763c08f9e62" target="_blank">피에이치에이(구 평화정공)</a>', 'name': '피에이치에이(구 평화정공)'}, {'coords': [37.2366953291098, 126.98338626288], 'popup': '<a href="https://www.notion.so/b4e2a21b980345ee86738bde8dcd36b0" target="_blank">아이탑스오토모티브(주)</a>', 'name': '아이탑스오토모티브(주)'}, {'coords': [35.6789846752146, 128.451408639358], 'popup': '<a href="https://www.notion.so/f537ee97c6234719991afe12ee6e6c96" target="_blank">평화발레오</a>', 'name': '평화발레오'}, {'coords': [37.1322506184303, 126.986248396439], 'popup': '<a href="https://www.notion.so/6eaff73785c6407c9ff4175973a367aa" target="_blank">모토닉스</a>', 'name': '모토닉스'}, {'coords': [37.4121292354356, 127.095040075648], 'popup': '<a href="https://www.notion.so/ff43d47557a244ddaf2f6373e2d3f3f2" target="_blank">네오펙트</a>', 'name': '네오펙트'}, {'coords': [37.0649194998213, 127.424089237956], 'popup': '<a href="https://www.notion.so/7453bc2df6894481b0c49e7617c7e9d7" target="_blank">두원중공업</a>', 'name': '두원중공업'}, {'coords': [36.3625387031177, 127.358186220312], 'popup': '<a href="https://www.notion.so/4a67c576d98e4b619478b484244ac4ea" target="_blank">에이유</a>', 'name': '에이유'}, {'coords': [37.2217338146075, 127.073736479707], 'popup': '<a href="https://www.notion.so/570869dce8e3415aa5532124b989a5e5" target="_blank">글로우원</a>', 'name': '글로우원'}, {'coords': [37.3965465431313, 126.963995060876], 'popup': '<a href="https://www.notion.so/c5cb2c0c64e24812ae6ae07e76080495" target="_blank">세솔테크</a>', 'name': '세솔테크'}, {'coords': [37.4001662034279, 127.112312371111], 'popup': '<a href="https://www.notion.so/d498d519cf3e4a41abd053624b21b652" target="_blank">(주)켐트로닉스</a>', 'name': '(주)켐트로닉스'}, {'coords': [37.5656490167105, 126.988142568678], 'popup': '<a href="https://www.notion.so/af9624f8475d4570aca946a82e431b82" target="_blank">한솔테크닉스(주)</a>', 'name': '한솔테크닉스(주)'}, {'coords': [36.8778759624631, 126.927084121328], 'popup': '<a href="https://www.notion.so/9fca3202033040d0a17d441bf1a9931a" target="_blank">(주)두원전자</a>', 'name': '(주)두원전자'}, {'coords': [37.3794194529151, 127.117037459562], 'popup': '<a href="https://www.notion.so/ec5cece2be924730a0dde4ac4ddbfdd8" target="_blank">모트렉스</a>', 'name': '모트렉스'}, {'coords': [37.4067134067601, 127.087301860142], 'popup': '<a href="https://www.notion.so/c09f18b105964e64bfa6eea4448d46c0" target="_blank">(주)텔레칩스</a>', 'name': '(주)텔레칩스'}, {'coords': [37.4004659332759, 127.106812648944], 'popup': '<a href="https://www.notion.so/a0781917a543444a9384f320f2410125" target="_blank">(주)넥스트칩</a>', 'name': '(주)넥스트칩'}, {'coords': [37.3522338304385, 126.958696447425], 'popup': '<a href="https://www.notion.so/c9dfc277825f460cab42016f51ca1020" target="_blank">현대케피코</a>', 'name': '현대케피코'}, {'coords': [37.4034931739961, 127.101608628993], 'popup': '<a href="https://www.notion.so/571b31d75b8a430bacc4222c610f4d6f" target="_blank">사피온코리아</a>', 'name': '사피온코리아'}, {'coords': [37.5537495904601, 126.642609958198], 'popup': '<a href="https://www.notion.so/403fae40bca845288498dfe0ba72f521" target="_blank">엘지마그나이파워트레인</a>', 'name': '엘지마그나이파워트레인'}, {'coords': [37.4802275551346, 126.881027516845], 'popup': '<a href="https://www.notion.so/d2edf011a0a54ac788067e6259007e8b" target="_blank">아이모스시스템㈜</a>', 'name': '아이모스시스템㈜'}, {'coords': [36.9156166380674, 127.058786706108], 'popup': '<a href="https://www.notion.so/ea892ef517df4b22b8c17dbcd762e588" target="_blank">(주)니프코 코리아</a>', 'name': '(주)니프코 코리아'}, {'coords': [36.4371535334572, 127.408797102595], 'popup': '<a href="https://www.notion.so/bdb178f3d1c342d49b4f14d2a645eb25" target="_blank">한온시스템(주)</a>', 'name': '한온시스템(주)'}, {'coords': [37.131877776031, 126.986397241092], 'popup': '<a href="https://www.notion.so/8ee5dbde648a450db06b3f8ad6ade60d" target="_blank">모토텍</a>', 'name': '모토텍'}, {'coords': [37.4018832825761, 126.966726268814], 'popup': '<a href="https://www.notion.so/83dea7cf685a415b9aae1c43a6c61c35" target="_blank">다믈파워반도체(유)</a>', 'name': '다믈파워반도체(유)'}, {'coords': [37.4052305806436, 127.101119203946], 'popup': '<a href="https://www.notion.so/10cf759a3e3f429a9afdbc7b3058a3cd" target="_blank">보스반도체</a>', 'name': '보스반도체'}, {'coords': [35.7336524002977, 128.450276670243], 'popup': '<a href="https://www.notion.so/b95ad6274eac49d9967c49e9403cd18e" target="_blank">에스트라오토모티브시스템(주)</a>', 'name': '에스트라오토모티브시스템(주)'}, {'coords': [37.2053445813477, 127.103122786659], 'popup': '<a href="https://www.notion.so/3de6b3badff542ada0e936a6160d9788" target="_blank">동아전기부품(주)</a>', 'name': '동아전기부품(주)'}, {'coords': [37.3003363600416, 127.071799505702], 'popup': '<a href="https://www.notion.so/182fa075dbea4d03bfe2550fab7f332c" target="_blank">(주)세코닉스</a>', 'name': '(주)세코닉스'}, {'coords': [37.563217323232, 126.836692616706], 'popup': '<a href="https://www.notion.so/d44f7d05249b4cad944562090c9a4f9f" target="_blank">센서텍(주)</a>', 'name': '센서텍(주)'}, {'coords': [37.5423850273981, 127.048622218395], 'popup': '<a href="https://www.notion.so/19c5b99dfc064e95aead5421a26612dc" target="_blank">드림에이스</a>', 'name': '드림에이스'}, {'coords': [37.507001535999, 127.058656127092], 'popup': '<a href="https://www.notion.so/2ab60b737d214f13aebc28ff1857e334" target="_blank">현대오토에버(주)</a>', 'name': '현대오토에버(주)'}, {'coords': [37.2804366618453, 127.117727916439], 'popup': '<a href="https://www.notion.so/178255580b7c46dd932f73a8166721c9" target="_blank">지티시스템(주)</a>', 'name': '지티시스템(주)'}, {'coords': [37.3236736184027, 126.952312658425], 'popup': '<a href="https://www.notion.so/1ef20d9c981340f6a73def9778a79ddc" target="_blank">현대위아(주)</a>', 'name': '현대위아(주)'}, {'coords': [37.4760850422676, 126.880102409973], 'popup': '<a href="https://www.notion.so/b1ac9b12a38d4eb793c50a4e7e0522b4" target="_blank">(주)세온이앤에스</a>', 'name': '(주)세온이앤에스'}, {'coords': [37.4852652574455, 127.036620497399], 'popup': '<a href="https://www.notion.so/LX-ff01de496afb46be874713e9b3be63b2" target="_blank">LX세미콘</a>', 'name': 'LX세미콘'}, {'coords': [37.4768406410165, 126.976467209269], 'popup': '<a href="https://www.notion.so/5a33622be27a4edd92f50aaa9d53a3ce" target="_blank">(주)네오티스</a>', 'name': '(주)네오티스'}, {'coords': [37.1821020038757, 127.087704068072], 'popup': '<a href="https://www.notion.so/5da956914bb64cffa0ce2591cd8f4aa0" target="_blank">덕일산업</a>', 'name': '덕일산업'}, {'coords': [37.249546386797, 127.130824340939], 'popup': '<a href="https://www.notion.so/75e55712d1b941c2b255575f7c55cc2a" target="_blank">우리산업홀딩스(주)</a>', 'name': '우리산업홀딩스(주)'}, {'coords': [36.7376372186731, 127.268147183446], 'popup': '<a href="https://www.notion.so/a119e21a451049a69d53a7f5ea44d2e4" target="_blank">피에이치에이에차(유)</a>', 'name': '피에이치에이에차(유)'}, {'coords': [37.3611202953662, 126.653113185157], 'popup': '<a href="https://www.notion.so/ec687d855bee4fcca1b4fbf6817f0cc6" target="_blank">대동도어</a>', 'name': '대동도어'}, {'coords': [37.5249785804442, 126.925298305571], 'popup': '<a href="https://www.notion.so/04385f5a47914e9e80c5318cb2e8b9cf" target="_blank">럭스소프트코리아(유)</a>', 'name': '럭스소프트코리아(유)'}, {'coords': [35.6794932733094, 128.45975835234], 'popup': '<a href="https://www.notion.so/4c7e72355b02494991bb8a94dd1cf517" target="_blank">상신브레이크(주)</a>', 'name': '상신브레이크(주)'}, {'coords': [36.8669445558337, 127.031660758458], 'popup': '<a href="https://www.notion.so/61713b1438824a98a24ee76ff1454ecf" target="_blank">두원공조</a>', 'name': '두원공조'}, {'coords': [37.379126110009, 126.638839290808], 'popup': '<a href="https://www.notion.so/715212f6c64141f0bba232800d66bec7" target="_blank">에이치엘클레무브</a>', 'name': '에이치엘클레무브'}, {'coords': [35.8678560611314, 128.82258048164], 'popup': '<a href="https://www.notion.so/eb3fdedd6ade4a9c9ac9de5c963b1a78" target="_blank">에스엘</a>', 'name': '에스엘'}, {'coords': [36.9552523966684, 126.855259652393], 'popup': '<a href="https://www.notion.so/87df2a65e21d4b7f8ced539eb469ae0d" target="_blank">에이치엘만도(주)</a>', 'name': '에이치엘만도(주)'}, {'coords': [37.5651004556362, 126.986959615068], 'popup': '<a href="https://www.notion.so/eeeeaf64f32c4224abccd47c47e6a1b7" target="_blank">티맵모빌리티</a>', 'name': '티맵모빌리티'}, {'coords': [37.4643623227152, 127.042663599215], 'popup': '<a href="https://www.notion.so/2bd689c96f9643fcb802b20d7a74df3a" target="_blank">현대자동차(주)</a>', 'name': '현대자동차(주)'}, {'coords': [35.2085767353509, 128.672879217047], 'popup': '<a href="https://www.notion.so/922ffb7b7315495a88f1cdf6881dda25" target="_blank">하이젠알앤엠(주)</a>', 'name': '하이젠알앤엠(주)'}, {'coords': [37.4004659332759, 127.106812648944], 'popup': '<a href="https://www.notion.so/f612db9ee1a744d3aa80b0c50ae28e40" target="_blank">이타스코리아(주)</a>', 'name': '이타스코리아(주)'}, {'coords': [37.5251913154781, 126.929112756574], 'popup': '<a href="https://www.notion.so/LG-0132f967eb9c4ac1876601926907661d" target="_blank">(주)LG에너지솔루션</a>', 'name': '(주)LG에너지솔루션'}, {'coords': [37.2800229864129, 127.119355859066], 'popup': '<a href="https://www.notion.so/90059c68f8de456eb0ed1bfc3f4e5c04" target="_blank">영화테크</a>', 'name': '영화테크'}, {'coords': [37.5039137667299, 127.025228444625], 'popup': '<a href="https://www.notion.so/9739ca6d05e545758d4343dd608ac717" target="_blank">(주)스트라드비젼</a>', 'name': '(주)스트라드비젼'}, {'coords': [37.4005439991968, 127.101344772186], 'popup': '<a href="https://www.notion.so/b591cd3f410c4e66bd6de416dbb8d0cb" target="_blank">(주)긴트</a>', 'name': '(주)긴트'}, {'coords': [37.485859571923, 127.114788278006], 'popup': '<a href="https://www.notion.so/d4145beda1fa425d9f5755128899a69b" target="_blank">(주)코아시아넥셀</a>', 'name': '(주)코아시아넥셀'}, {'coords': [35.148277745336, 129.065437098386], 'popup': '<a href="https://www.notion.so/d8fb991389f045f1a719a8a9037082aa" target="_blank">(주)모플랫</a>', 'name': '(주)모플랫'}, {'coords': [35.3230592167994, 129.192649726384], 'popup': '<a href="https://www.notion.so/1a0a9f41f8e04bfab1fb7a065c60d8b6" target="_blank">성우하이텍</a>', 'name': '성우하이텍'}, {'coords': [37.503773975836, 127.048914400159], 'popup': '<a href="https://www.notion.so/697d744fdbc5427db3d8606406954414" target="_blank">세방전지</a>', 'name': '세방전지'}, {'coords': [35.9277335652478, 128.944370902648], 'popup': '<a href="https://www.notion.so/77afdf31bf29442bb1301fe3af852ee2" target="_blank">화신</a>', 'name': '화신'}, {'coords': [35.9458228960625, 127.129480474095], 'popup': '<a href="https://www.notion.so/b26014acf64a45e5ac96f98cb9acea5f" target="_blank">일진하이솔루스</a>', 'name': '일진하이솔루스'}, {'coords': [37.488402778565, 127.121785224819], 'popup': '<a href="https://www.notion.so/4114320d27ad448890c7adbca0e68780" target="_blank">아이에이</a>', 'name': '아이에이'}, {'coords': [37.4013212095583, 126.964803694122], 'popup': '<a href="https://www.notion.so/19c0177068b442e3b80c5e79cb5fe5cc" target="_blank">서연이화</a>', 'name': '서연이화'}, {'coords': [37.0106471696222, 127.152518185898], 'popup': '<a href="https://www.notion.so/89fcf1480a5143d6ab17631f44008c04" target="_blank">코리아에프티</a>', 'name': '코리아에프티'}, {'coords': [35.705721699372, 129.207129757637], 'popup': '<a href="https://www.notion.so/58e4bd2254904f81a2ab473206e8c2cc" target="_blank">디아이씨</a>', 'name': '디아이씨'}, {'coords': [35.8683151554543, 128.83671830436], 'popup': '<a href="https://www.notion.so/9e74c73715914643886b612633b01bc8" target="_blank">아진산업</a>', 'name': '아진산업'}, {'coords': [35.6117493536985, 126.843491196563], 'popup': '<a href="https://www.notion.so/c3bf1260efac4f598a3aa7e93ddaaf61" target="_blank">대우전자부품(주)</a>', 'name': '대우전자부품(주)'}, {'coords': [37.3852780806686, 126.655506300586], 'popup': '<a href="https://www.notion.so/b50a1d0b91e64eca98c0ea4a3394c7fd" target="_blank">한국단자공업</a>', 'name': '한국단자공업'}, {'coords': [35.8344487683948, 128.505761957389], 'popup': '<a href="https://www.notion.so/bbb28d9ba1414ba284337a6db8a7a9a3" target="_blank">경창산업</a>', 'name': '경창산업'}, {'coords': [35.3696280413174, 129.065918204812], 'popup': '<a href="https://www.notion.so/DN-889a68bd007d4e3fae43ef66c91016cb" target="_blank">DN오토모티브</a>', 'name': 'DN오토모티브'}, {'coords': [37.3210321686448, 126.764972002615], 'popup': '<a href="https://www.notion.so/353ee00bd32e4c519f63c8fa276ee895" target="_blank">태양금속공업(주)</a>', 'name': '태양금속공업(주)'}, {'coords': [37.5068166240241, 127.057978287882], 'popup': '<a href="https://www.notion.so/24faf031238b4dfc9890ad0b516a9f78" target="_blank">계양전기</a>', 'name': '계양전기'}, {'coords': [36.8974276047071, 127.200848085837], 'popup': '<a href="https://www.notion.so/2635e7e8db094904be4c210e2d448603" target="_blank">대원강업</a>', 'name': '대원강업'}, {'coords': [37.5229076879049, 126.883516835301], 'popup': '<a href="https://www.notion.so/e421d0f417784f869260f59a779eb5de" target="_blank">우신시스템</a>', 'name': '우신시스템'}, {'coords': [35.8546002660858, 128.807218155812], 'popup': '<a href="https://www.notion.so/254d2cdd2c2f46748b1dc06b628365de" target="_blank">체시스</a>', 'name': '체시스'}, {'coords': [36.7563620258972, 127.292794633503], 'popup': '<a href="https://www.notion.so/c0caf1e0bafe4dbca29d84251916f6e9" target="_blank">(주)오스템</a>', 'name': '(주)오스템'}, {'coords': [36.3928592412056, 127.403441383093], 'popup': '<a href="https://www.notion.so/3aca50e714dd43569a95181f3a8e2229" target="_blank">트루윈</a>', 'name': '트루윈'}, {'coords': [35.8336623704552, 128.516778094558], 'popup': '<a href="https://www.notion.so/daae1c34d6d94bcd9dbc603b0ec6010f" target="_blank">삼보모터스</a>', 'name': '삼보모터스'}, {'coords': [35.2074068983116, 128.639007547642], 'popup': '<a href="https://www.notion.so/AMS-e1f8e3cefb314b90b42422b06639b252" target="_blank">우수AMS</a>', 'name': '우수AMS'}, {'coords': [35.3005864177979, 129.136849969451], 'popup': '<a href="https://www.notion.so/SNT-322f2287f4cb46b48ae110b470f54542" target="_blank">SNT모티브</a>', 'name': 'SNT모티브'}, {'coords': [36.6430245801536, 127.274839624903], 'popup': '<a href="https://www.notion.so/dce797bdb42f4265bb0670e59477f90b" target="_blank">유라테크</a>', 'name': '유라테크'}, {'coords': [37.249546386797, 127.130824340939], 'popup': '<a href="https://www.notion.so/82c378151afb4c7393db8e61ec124e98" target="_blank">우리산업</a>', 'name': '우리산업'}, {'coords': [35.7381998683146, 128.46018272235], 'popup': '<a href="https://www.notion.so/de29cc9f37704ede9f535ad9b5bdccc7" target="_blank">평화산업</a>', 'name': '평화산업'}, {'coords': [35.5691776555063, 129.370448665737], 'popup': '<a href="https://www.notion.so/5ad599131a77421ca7e56965bd40a777" target="_blank">에스제이지세종</a>', 'name': '에스제이지세종'}, {'coords': [37.335187586405, 126.723405632671], 'popup': '<a href="https://www.notion.so/6ef363dd189d46b3b709a95c1913268d" target="_blank">인지컨트롤스</a>', 'name': '인지컨트롤스'}, {'coords': [37.2374301151274, 126.984591838204], 'popup': '<a href="https://www.notion.so/ad9fe9ff919b44ce853c5ed1ebfedf80" target="_blank">모베이스</a>', 'name': '모베이스'}, {'coords': [37.5696679696981, 126.982179278549], 'popup': '<a href="https://www.notion.so/47bd7a773e3e43ed96a6e9ece1a0f1a1" target="_blank">모토닉</a>', 'name': '모토닉'}, {'coords': [37.5107638010691, 127.112850333881], 'popup': '<a href="https://www.notion.so/745e2290b17743bb9919b733a4deb28c" target="_blank">인팩</a>', 'name': '인팩'}, {'coords': [37.3046975312339, 126.777945351776], 'popup': '<a href="https://www.notion.so/SJM-31bab66186214c6798bc694029a42010" target="_blank">SJM</a>', 'name': 'SJM'}, {'coords': [35.6117493536985, 126.843491196563], 'popup': '<a href="https://www.notion.so/2af4a00838d449dbac9edb8c430b7dc3" target="_blank">대우부품(대우전자부품(주))</a>', 'name': '대우부품(대우전자부품(주))'}, {'coords': [35.2040368394586, 128.679451970598], 'popup': '<a href="https://www.notion.so/373c08c82bbb4b8e8e6a787d7b9e8bdd" target="_blank">지엠비코리아</a>', 'name': '지엠비코리아'}, {'coords': [37.3127252973435, 126.781824908466], 'popup': '<a href="https://www.notion.so/860cb8cb98a84779911efb2fda5703b0" target="_blank">대원산업</a>', 'name': '대원산업'}, {'coords': [37.5261081409048, 126.918710469805], 'popup': '<a href="https://www.notion.so/d36e1814b50c49188bb109ecb6a18bb0" target="_blank">로스웰</a>', 'name': '로스웰'}, {'coords': [35.8489794221683, 128.501708045874], 'popup': '<a href="https://www.notion.so/a74ece9372d64a439bd81a9323544259" target="_blank">티에이치엔</a>', 'name': '티에이치엔'}, {'coords': [35.0891980810181, 128.97087146291], 'popup': '<a href="https://www.notion.so/bee8a76466144c2cb706146d6bcfb1b0" target="_blank">유니테크노</a>', 'name': '유니테크노'}, {'coords': [35.2073716679663, 128.678403166659], 'popup': '<a href="https://www.notion.so/5fe8360632f34918a0579140749444e4" target="_blank">대성파인텍</a>', 'name': '대성파인텍'}, {'coords': [35.2174549550459, 128.66723518931], 'popup': '<a href="https://www.notion.so/4b84a44936444817b5e32519b0bbc0ce" target="_blank">삼성공조</a>', 'name': '삼성공조'}, {'coords': [37.042538866924, 127.119461462224], 'popup': '<a href="https://www.notion.so/7be716c45add4a36bf6c26b889a8bf47" target="_blank">성창오토텍</a>', 'name': '성창오토텍'}, {'coords': [36.7672735834568, 127.27832196479], 'popup': '<a href="https://www.notion.so/5439a753ec4c4acdbd45e267891f9f7c" target="_blank">새론오토모티브</a>', 'name': '새론오토모티브'}, {'coords': [35.3247524191488, 129.256589341971], 'popup': '<a href="https://www.notion.so/0dcb0f821a0a4751a79db83025221433" target="_blank">효성전기</a>', 'name': '효성전기'}, {'coords': [36.8006753294269, 127.08703828364], 'popup': '<a href="https://www.notion.so/350f8b3c2f0249169821d25f70df6f8b" target="_blank">케이비오토텍</a>', 'name': '케이비오토텍'}];
-
-        var markers = [];
-
-        markersData.forEach(function(markerData) {
-            var marker = L.AwesomeMarkers.icon({
-                icon: 'info-sign',
-                markerColor: 'blue'
-            });
-
-            var leafletMarker = L.marker(markerData.coords, {icon: marker})
-                .bindPopup(markerData.popup)
-                .addTo(map_0ae8521e9893737593c662994358d45a);
-
-            leafletMarker.getElement().setAttribute('data-popup-text', markerData.popup);
-            leafletMarker.getElement().setAttribute('data-name', markerData.name.toLowerCase());
-
-            markers.push(leafletMarker);
-        });
-
-        function searchName() {
-            var input = document.getElementById('searchBox').value.toLowerCase();
-
-            markers.forEach(function(marker) {
-                var markerElement = marker.getElement();
-                var markerName = markerElement.getAttribute('data-name');
-
-                if (markerName.includes(input)) {
-                    markerElement.style.display = 'block';
-                    marker.setIcon(L.AwesomeMarkers.icon({
-                        icon: 'info-sign',
-                        markerColor: 'orange'
-                    }));
-                } else {
-                    markerElement.style.display = 'block';
-                    marker.setIcon(L.AwesomeMarkers.icon({
-                        icon: 'info-sign',
-                        markerColor: 'blue'
-                    }));
-                }
-            });
+    
+    
+<div style="position: fixed; top: 10px; left: 10px; z-index: 9999;">
+    <input type="text" id="search-box" placeholder="회사 이름을 입력하세요" style="width: 200px;">
+    <div id="search-results" style="background: white; max-height: 200px; overflow-y: auto;"></div>
+</div>
+<script>
+var originalMarkers = [];
+function searchCompany() {
+    var input = document.getElementById("search-box").value;
+    var results = document.getElementById("search-results");
+    results.innerHTML = "";
+    var companyData = [{'name': '콘티넨탈오토모티브코리아', 'link': 'https://www.notion.so/30342795801348e2a773a12e174537ae', 'lat': 37.40043, 'lng': 127.1102}, {'name': '모트렉스', 'link': 'https://www.notion.so/ec5cece2be924730a0dde4ac4ddbfdd8', 'lat': 37.37942, 'lng': 127.117}, {'name': '(주)텔레칩스', 'link': 'https://www.notion.so/c09f18b105964e64bfa6eea4448d46c0', 'lat': 37.40671, 'lng': 127.0873}, {'name': '현대오토에버(주)', 'link': 'https://www.notion.so/2ab60b737d214f13aebc28ff1857e334', 'lat': 37.507, 'lng': 127.0587}, {'name': '현대자동차(주)', 'link': 'https://www.notion.so/2bd689c96f9643fcb802b20d7a74df3a', 'lat': 37.46436, 'lng': 127.0427}, {'name': '로스웰', 'link': 'https://www.notion.so/d36e1814b50c49188bb109ecb6a18bb0', 'lat': 37.52611, 'lng': 126.9187}, {'name': '(주)켐트로닉스', 'link': 'https://www.notion.so/d498d519cf3e4a41abd053624b21b652', 'lat': 37.40017, 'lng': 127.1123}, {'name': '보스반도체', 'link': 'https://www.notion.so/10cf759a3e3f429a9afdbc7b3058a3cd', 'lat': 37.40523, 'lng': 127.1011}, {'name': '(주)세코닉스', 'link': 'https://www.notion.so/182fa075dbea4d03bfe2550fab7f332c', 'lat': 37.30034, 'lng': 127.0718}, {'name': '에이치엘만도(주)', 'link': 'https://www.notion.so/87df2a65e21d4b7f8ced539eb469ae0d', 'lat': 36.95525, 'lng': 126.8553}, {'name': '티맵모빌리티', 'link': 'https://www.notion.so/eeeeaf64f32c4224abccd47c47e6a1b7', 'lat': 37.5651, 'lng': 126.987}, {'name': '(주)긴트', 'link': 'https://www.notion.so/b591cd3f410c4e66bd6de416dbb8d0cb', 'lat': 37.40054, 'lng': 127.1013}, {'name': '덴소코리아(주)', 'link': 'https://www.notion.so/b8b26ee2d39f4f8b8e737a4c40f129d2', 'lat': 35.15894, 'lng': 128.5516}, {'name': '로버트보쉬코리아', 'link': 'https://www.notion.so/e7111cc2999a4b7b8260036636a34895', 'lat': 36.44208, 'lng': 127.4034}, {'name': '디젠', 'link': 'https://www.notion.so/d8740d014c914c688973c383d6d2a994', 'lat': 35.82358, 'lng': 128.5111}, {'name': '현대케피코', 'link': 'https://www.notion.so/c9dfc277825f460cab42016f51ca1020', 'lat': 37.35223, 'lng': 126.9587}, {'name': '사피온코리아', 'link': 'https://www.notion.so/571b31d75b8a430bacc4222c610f4d6f', 'lat': 37.40349, 'lng': 127.1016}, {'name': '드림에이스', 'link': 'https://www.notion.so/19c5b99dfc064e95aead5421a26612dc', 'lat': 37.54239, 'lng': 127.0486}, {'name': '현대위아(주)', 'link': 'https://www.notion.so/1ef20d9c981340f6a73def9778a79ddc', 'lat': 37.32367, 'lng': 126.9523}, {'name': '(주)코아시아넥셀', 'link': 'https://www.notion.so/d4145beda1fa425d9f5755128899a69b', 'lat': 37.48586, 'lng': 127.1148}, {'name': '아이에이', 'link': 'https://www.notion.so/4114320d27ad448890c7adbca0e68780', 'lat': 37.4884, 'lng': 127.1218}, {'name': '태양금속공업(주)', 'link': 'https://www.notion.so/353ee00bd32e4c519f63c8fa276ee895', 'lat': 37.32103, 'lng': 126.765}, {'name': 'SNT모티브', 'link': 'https://www.notion.so/SNT-322f2287f4cb46b48ae110b470f54542', 'lat': 35.30059, 'lng': 129.1368}, {'name': '유라코퍼레이션', 'link': 'https://www.notion.so/cc718c849ebf47b5b06a935134633d12?pvs=25', 'lat': 37.40277, 'lng': 127.1081}, {'name': '발레오오토모티브코리아', 'link': 'https://www.notion.so/ee444cfce47b475dab0f4ee6331e6318', 'lat': 37.32452, 'lng': 126.7808}, {'name': '모베이스전자', 'link': 'https://www.notion.so/961b07ef010543c1b2ad3986d9705767', 'lat': 37.23743, 'lng': 126.9846}, {'name': '피에이치에이(구 평화정공)', 'link': 'https://www.notion.so/461c372bddf34840bc2ec763c08f9e62', 'lat': 37.29384, 'lng': 127.0494}, {'name': '(주)넥스트칩', 'link': 'https://www.notion.so/a0781917a543444a9384f320f2410125', 'lat': 37.40047, 'lng': 127.1068}, {'name': '센서텍(주)', 'link': 'https://www.notion.so/d44f7d05249b4cad944562090c9a4f9f', 'lat': 37.56322, 'lng': 126.8367}, {'name': 'LX세미콘', 'link': 'https://www.notion.so/LX-ff01de496afb46be874713e9b3be63b2', 'lat': 37.48527, 'lng': 127.0366}, {'name': '(주)네오티스', 'link': 'https://www.notion.so/5a33622be27a4edd92f50aaa9d53a3ce', 'lat': 37.47684, 'lng': 126.9765}, {'name': '덕일산업', 'link': 'https://www.notion.so/5da956914bb64cffa0ce2591cd8f4aa0', 'lat': 37.1821, 'lng': 127.0877}, {'name': '우리산업홀딩스(주)', 'link': 'https://www.notion.so/75e55712d1b941c2b255575f7c55cc2a', 'lat': 37.24955, 'lng': 127.1308}, {'name': '이타스코리아(주)', 'link': 'https://www.notion.so/f612db9ee1a744d3aa80b0c50ae28e40', 'lat': 37.40047, 'lng': 127.1068}, {'name': '(주)LG에너지솔루션', 'link': 'https://www.notion.so/LG-0132f967eb9c4ac1876601926907661d', 'lat': 37.52519, 'lng': 126.9291}, {'name': '화신', 'link': 'https://www.notion.so/77afdf31bf29442bb1301fe3af852ee2', 'lat': 35.92773, 'lng': 128.9444}, {'name': '아진산업', 'link': 'https://www.notion.so/9e74c73715914643886b612633b01bc8', 'lat': 35.86832, 'lng': 128.8367}, {'name': '대우전자부품(주)', 'link': 'https://www.notion.so/c3bf1260efac4f598a3aa7e93ddaaf61', 'lat': 35.61175, 'lng': 126.8435}, {'name': '트루윈', 'link': 'https://www.notion.so/3aca50e714dd43569a95181f3a8e2229', 'lat': 36.39286, 'lng': 127.4034}, {'name': '우리산업', 'link': 'https://www.notion.so/82c378151afb4c7393db8e61ec124e98', 'lat': 37.24955, 'lng': 127.1308}, {'name': '모토닉', 'link': 'https://www.notion.so/47bd7a773e3e43ed96a6e9ece1a0f1a1', 'lat': 37.56967, 'lng': 126.9822}, {'name': '인팩', 'link': 'https://www.notion.so/745e2290b17743bb9919b733a4deb28c', 'lat': 37.51076, 'lng': 127.1129}, {'name': '대원산업', 'link': 'https://www.notion.so/860cb8cb98a84779911efb2fda5703b0', 'lat': 37.31273, 'lng': 126.7818}, {'name': '효성전기', 'link': 'https://www.notion.so/0dcb0f821a0a4751a79db83025221433', 'lat': 35.32475, 'lng': 129.2566}, {'name': '코렌스', 'link': 'https://www.notion.so/2368494afbbc406a905c26baccf139bd', 'lat': 35.38227, 'lng': 129.0195}, {'name': '모토닉스', 'link': 'https://www.notion.so/6eaff73785c6407c9ff4175973a367aa', 'lat': 37.13225, 'lng': 126.9862}, {'name': '네오펙트', 'link': 'https://www.notion.so/ff43d47557a244ddaf2f6373e2d3f3f2', 'lat': 37.41213, 'lng': 127.095}, {'name': '두원중공업', 'link': 'https://www.notion.so/7453bc2df6894481b0c49e7617c7e9d7', 'lat': 37.06492, 'lng': 127.4241}, {'name': '글로우원', 'link': 'https://www.notion.so/570869dce8e3415aa5532124b989a5e5', 'lat': 37.22173, 'lng': 127.0737}, {'name': '한온시스템(주)', 'link': 'https://www.notion.so/bdb178f3d1c342d49b4f14d2a645eb25', 'lat': 36.43715, 'lng': 127.4088}, {'name': 'https://www.saramin.co.kr/zf_user/company-info/view?csn=czJtVlBEd3FPR3NVVTVHTURVYkNSZz09&popup_yn=y주)모토텍', 'link': 'https://www.notion.so/8ee5dbde648a450db06b3f8ad6ade60d', 'lat': 37.13188, 'lng': 126.9864}, {'name': '다믈파워반도체(유)', 'link': 'https://www.notion.so/83dea7cf685a415b9aae1c43a6c61c35', 'lat': 37.40188, 'lng': 126.9667}, {'name': '에스트라오토모티브시스템(주)', 'link': 'https://www.notion.so/b95ad6274eac49d9967c49e9403cd18e', 'lat': 35.73365, 'lng': 128.4503}, {'name': '(주)세온이앤에스', 'link': 'https://www.notion.so/b1ac9b12a38d4eb793c50a4e7e0522b4', 'lat': 37.47609, 'lng': 126.8801}, {'name': '대동도어', 'link': 'https://www.notion.so/ec687d855bee4fcca1b4fbf6817f0cc6', 'lat': 37.36112, 'lng': 126.6531}, {'name': '럭스소프트코리아(유)', 'link': 'https://www.notion.so/04385f5a47914e9e80c5318cb2e8b9cf', 'lat': 37.52498, 'lng': 126.9253}, {'name': '상신브레이크(주)', 'link': 'https://www.notion.so/4c7e72355b02494991bb8a94dd1cf517', 'lat': 35.67949, 'lng': 128.4598}, {'name': '영화테크', 'link': 'https://www.notion.so/90059c68f8de456eb0ed1bfc3f4e5c04', 'lat': 37.28002, 'lng': 127.1194}, {'name': '(주)스트라드비젼', 'link': 'https://www.notion.so/9739ca6d05e545758d4343dd608ac717', 'lat': 37.50391, 'lng': 127.0252}, {'name': '(주)모플랫', 'link': 'https://www.notion.so/d8fb991389f045f1a719a8a9037082aa', 'lat': 35.14828, 'lng': 129.0654}, {'name': '세방전지', 'link': 'https://www.notion.so/697d744fdbc5427db3d8606406954414', 'lat': 37.50377, 'lng': 127.0489}, {'name': '서연이화', 'link': 'https://www.notion.so/19c0177068b442e3b80c5e79cb5fe5cc', 'lat': 37.40132, 'lng': 126.9648}, {'name': '코리아에프티', 'link': 'https://www.notion.so/89fcf1480a5143d6ab17631f44008c04', 'lat': 37.01065, 'lng': 127.1525}, {'name': '경창산업', 'link': 'https://www.notion.so/bbb28d9ba1414ba284337a6db8a7a9a3', 'lat': 35.83445, 'lng': 128.5058}, {'name': '계양전기', 'link': 'https://www.notion.so/24faf031238b4dfc9890ad0b516a9f78', 'lat': 37.50682, 'lng': 127.058}, {'name': '우신시스템', 'link': 'https://www.notion.so/e421d0f417784f869260f59a779eb5de', 'lat': 37.52291, 'lng': 126.8835}, {'name': '유라테크', 'link': 'https://www.notion.so/dce797bdb42f4265bb0670e59477f90b', 'lat': 36.64302, 'lng': 127.2748}, {'name': '인지컨트롤스', 'link': 'https://www.notion.so/6ef363dd189d46b3b709a95c1913268d', 'lat': 37.33519, 'lng': 126.7234}, {'name': '모베이스', 'link': 'https://www.notion.so/ad9fe9ff919b44ce853c5ed1ebfedf80', 'lat': 37.23743, 'lng': 126.9846}, {'name': 'SJM', 'link': 'https://www.notion.so/SJM-31bab66186214c6798bc694029a42010', 'lat': 37.3047, 'lng': 126.7779}, {'name': '지엠비코리아', 'link': 'https://www.notion.so/373c08c82bbb4b8e8e6a787d7b9e8bdd', 'lat': 35.20404, 'lng': 128.6795}, {'name': '티에이치엔', 'link': 'https://www.notion.so/a74ece9372d64a439bd81a9323544259', 'lat': 35.84898, 'lng': 128.5017}, {'name': '유니테크노', 'link': 'https://www.notion.so/bee8a76466144c2cb706146d6bcfb1b0', 'lat': 35.0892, 'lng': 128.9709}, {'name': '케이퓨얼셀', 'link': 'https://www.notion.so/d78a67dc38a54e41a6e599d5093fe766', 'lat': 37.28002, 'lng': 127.1194}, {'name': '유니크', 'link': 'https://www.notion.so/7736e953865d450d8e345ff35039d56f', 'lat': 35.28825, 'lng': 128.7746}, {'name': '아이탑스오토모티브(주)', 'link': 'https://www.notion.so/b4e2a21b980345ee86738bde8dcd36b0', 'lat': 37.2367, 'lng': 126.9834}, {'name': '평화발레오', 'link': 'https://www.notion.so/f537ee97c6234719991afe12ee6e6c96', 'lat': 35.67898, 'lng': 128.4514}, {'name': '세솔테크', 'link': 'https://www.notion.so/c5cb2c0c64e24812ae6ae07e76080495', 'lat': 37.39655, 'lng': 126.964}, {'name': '한솔테크닉스(주)', 'link': 'https://www.notion.so/af9624f8475d4570aca946a82e431b82', 'lat': 37.56565, 'lng': 126.9881}, {'name': '(주)두원전자', 'link': 'https://www.notion.so/9fca3202033040d0a17d441bf1a9931a', 'lat': 36.87788, 'lng': 126.9271}, {'name': '엘지마그나이파워트레인', 'link': 'https://www.notion.so/403fae40bca845288498dfe0ba72f521', 'lat': 37.55375, 'lng': 126.6426}, {'name': '아이모스시스템㈜', 'link': 'https://www.notion.so/d2edf011a0a54ac788067e6259007e8b', 'lat': 37.48023, 'lng': 126.881}, {'name': '(주)니프코 코리아', 'link': 'https://www.notion.so/ea892ef517df4b22b8c17dbcd762e588', 'lat': 36.91562, 'lng': 127.0588}, {'name': '동아전기부품(주)', 'link': 'https://www.notion.so/3de6b3badff542ada0e936a6160d9788', 'lat': 37.20534, 'lng': 127.1031}, {'name': '지티시스템(주)', 'link': 'https://www.notion.so/178255580b7c46dd932f73a8166721c9', 'lat': 37.28044, 'lng': 127.1177}, {'name': '피에이치에이에차(유)', 'link': 'https://www.notion.so/a119e21a451049a69d53a7f5ea44d2e4', 'lat': 36.73764, 'lng': 127.2681}, {'name': '두원공조', 'link': 'https://www.notion.so/61713b1438824a98a24ee76ff1454ecf', 'lat': 36.86694, 'lng': 127.0317}, {'name': '에이치엘클레무브', 'link': 'https://www.notion.so/715212f6c64141f0bba232800d66bec7', 'lat': 37.37913, 'lng': 126.6388}, {'name': '에스엘', 'link': 'https://www.notion.so/eb3fdedd6ade4a9c9ac9de5c963b1a78', 'lat': 35.86786, 'lng': 128.8226}, {'name': '성우하이텍', 'link': 'https://www.notion.so/1a0a9f41f8e04bfab1fb7a065c60d8b6', 'lat': 35.32306, 'lng': 129.1926}, {'name': '일진하이솔루스', 'link': 'https://www.notion.so/b26014acf64a45e5ac96f98cb9acea5f', 'lat': 35.94582, 'lng': 127.1295}, {'name': '디아이씨', 'link': 'https://www.notion.so/58e4bd2254904f81a2ab473206e8c2cc', 'lat': 35.70572, 'lng': 129.2071}, {'name': '한국단자공업', 'link': 'https://www.notion.so/b50a1d0b91e64eca98c0ea4a3394c7fd', 'lat': 37.38528, 'lng': 126.6555}, {'name': 'DN오토모티브', 'link': 'https://www.notion.so/DN-889a68bd007d4e3fae43ef66c91016cb', 'lat': 35.36963, 'lng': 129.0659}, {'name': '대원강업', 'link': 'https://www.notion.so/2635e7e8db094904be4c210e2d448603', 'lat': 36.89743, 'lng': 127.2008}, {'name': '(주)오스템', 'link': 'https://www.notion.so/c0caf1e0bafe4dbca29d84251916f6e9', 'lat': 36.75636, 'lng': 127.2928}, {'name': '삼보모터스', 'link': 'https://www.notion.so/daae1c34d6d94bcd9dbc603b0ec6010f', 'lat': 35.83366, 'lng': 128.5168}, {'name': '우수AMS', 'link': 'https://www.notion.so/AMS-e1f8e3cefb314b90b42422b06639b252', 'lat': 35.20741, 'lng': 128.639}, {'name': '평화산업', 'link': 'https://www.notion.so/de29cc9f37704ede9f535ad9b5bdccc7', 'lat': 35.7382, 'lng': 128.4602}, {'name': '에스제이지세종', 'link': 'https://www.notion.so/5ad599131a77421ca7e56965bd40a777', 'lat': 35.56918, 'lng': 129.3704}, {'name': '대우부품(대우전자부품(주))', 'link': 'https://www.notion.so/2af4a00838d449dbac9edb8c430b7dc3', 'lat': 35.61175, 'lng': 126.8435}, {'name': '삼성공조', 'link': 'https://www.notion.so/4b84a44936444817b5e32519b0bbc0ce', 'lat': 35.21745, 'lng': 128.6672}, {'name': '성창오토텍', 'link': 'https://www.notion.so/7be716c45add4a36bf6c26b889a8bf47', 'lat': 37.04254, 'lng': 127.1195}, {'name': '새론오토모티브', 'link': 'https://www.notion.so/5439a753ec4c4acdbd45e267891f9f7c', 'lat': 36.76727, 'lng': 127.2783}, {'name': '케이비오토텍', 'link': 'https://www.notion.so/350f8b3c2f0249169821d25f70df6f8b', 'lat': 36.80068, 'lng': 127.087}, {'name': '에이유', 'link': 'https://www.notion.so/4a67c576d98e4b619478b484244ac4ea', 'lat': 36.36254, 'lng': 127.3582}, {'name': '하이젠알앤엠(주)', 'link': 'https://www.notion.so/922ffb7b7315495a88f1cdf6881dda25', 'lat': 35.20858, 'lng': 128.6729}, {'name': '체시스', 'link': 'https://www.notion.so/254d2cdd2c2f46748b1dc06b628365de', 'lat': 35.8546, 'lng': 128.8072}, {'name': '대성파인텍', 'link': 'https://www.notion.so/5fe8360632f34918a0579140749444e4', 'lat': 35.20737, 'lng': 128.6784}, {'name': '엘에스오토모티브테크놀로지스', 'link': 'https://www.notion.so/62a6b6de43a34f1e9847b95b4fbc2a44', 'lat': 37.3935078942772, 'lng': 126.959414289663}, {'name': '에프에스솔루션', 'link': 'https://www.notion.so/cba3c5ddc7714a23b6ce7fed90c9b298', 'lat': 37.4061232192454, 'lng': 127.085353833074}, {'name': '아우토크립트', 'link': 'https://www.notion.so/8183902c5bd641afa27b427748411751', 'lat': 37.5300697454376, 'lng': 126.926245598736}, {'name': 'LG화학', 'link': 'https://www.notion.so/LG-6d14c83ec36c44bab83b15d73a99983e', 'lat': 37.5279271045092, 'lng': 126.929241174348}, {'name': '대양전기공업', 'link': 'https://www.notion.so/a0fa8cae8472431d86c837ad638892f5', 'lat': 37.3745343892134, 'lng': 126.641791524203}, {'name': '모라이', 'link': 'https://www.notion.so/b861d4a73104469597785dc39c334549', 'lat': 37.5073809450356, 'lng': 127.056821251348}, {'name': '에스제이지 중앙연구소', 'link': 'https://www.notion.so/0001c8120d254343ab4c86cc45be6b4f', 'lat': 35.5700554069753, 'lng': 129.370400755657}, {'name': '(주)삼현', 'link': 'https://www.notion.so/736dcadc8e794766aabe2a2006d5b583', 'lat': 35.2452147548722, 'lng': 128.620217271342}];
+    var searchMarkers = [];
+    for (var i = 0; i < companyData.length; i++) {
+        if (companyData[i].name.includes(input)) {
+            var resultItem = document.createElement("div");
+            resultItem.innerHTML = "<a href='" + companyData[i].link + "' target='_blank'>" + companyData[i].name + "</a>";
+            results.appendChild(resultItem);
+            searchMarkers.push(companyData[i]);
         }
-    </script>
+    }
+    resetMarkers();
+    addSearchMarkers(searchMarkers);
+}
+
+function resetMarkers() {
+    if (originalMarkers.length === 0) {
+        originalMarkers = [...cluster.getLayers()];
+    }
+    cluster.clearLayers();
+    originalMarkers.forEach(marker => cluster.addLayer(marker));
+}
+
+function addSearchMarkers(markers) {
+    markers.forEach(markerData => {
+        var marker = L.marker([markerData.lat, markerData.lng], {icon: L.icon({iconUrl: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png'})});
+        marker.bindPopup("<a href='" + markerData.link + "' target='_blank'>" + markerData.name + "</a>");
+        cluster.addLayer(marker);
+    });
+}
+
+document.getElementById("search-box").addEventListener("input", searchCompany);
+</script>
+    
+            <div class="folium-map" id="map_358d7f992864203232927bb47de14da2" ></div>
+        
 </body>
+<script>
+    
+    
+            var map_358d7f992864203232927bb47de14da2 = L.map(
+                "map_358d7f992864203232927bb47de14da2",
+                {
+                    center: [37.557, 126.864],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 9,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_66525c49e9304220fdb4c89eab1f3d48 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_66525c49e9304220fdb4c89eab1f3d48.addTo(map_358d7f992864203232927bb47de14da2);
+        
+    
+            var marker_cluster_a4121cc8387a2ce5cba21e320d95e01e = L.markerClusterGroup(
+                {}
+            );
+        
+    
+            var marker_fc9394601fb07247f9db67ed3562c9a8 = L.marker(
+                [37.40043, 127.1102],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_74f3690fefec974532d018ab2733d6fb = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_f78a2f6361ff5c2091a457c6de37980a = $(`<div id="html_f78a2f6361ff5c2091a457c6de37980a" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/30342795801348e2a773a12e174537ae' target='_blank'>콘티넨탈오토모티브코리아</a></div>`)[0];
+                popup_74f3690fefec974532d018ab2733d6fb.setContent(html_f78a2f6361ff5c2091a457c6de37980a);
+            
+        
+
+        marker_fc9394601fb07247f9db67ed3562c9a8.bindPopup(popup_74f3690fefec974532d018ab2733d6fb)
+        ;
+
+        
+    
+    
+            var marker_1dff7731f4c439d68335e7feace557ed = L.marker(
+                [37.37942, 127.117],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_5daf5dbbf1f1d77d87d3d7fb95b4af1e = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_bde9514cd8348424b599b13d04388cce = $(`<div id="html_bde9514cd8348424b599b13d04388cce" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/ec5cece2be924730a0dde4ac4ddbfdd8' target='_blank'>모트렉스</a></div>`)[0];
+                popup_5daf5dbbf1f1d77d87d3d7fb95b4af1e.setContent(html_bde9514cd8348424b599b13d04388cce);
+            
+        
+
+        marker_1dff7731f4c439d68335e7feace557ed.bindPopup(popup_5daf5dbbf1f1d77d87d3d7fb95b4af1e)
+        ;
+
+        
+    
+    
+            var marker_3e9a54161dc4e7b44bebea096f857fe4 = L.marker(
+                [37.40671, 127.0873],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_7ce54d77ef6d4b51bdc5d744da5920dc = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_de6428656bcef291e2fd4ff1a657d868 = $(`<div id="html_de6428656bcef291e2fd4ff1a657d868" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/c09f18b105964e64bfa6eea4448d46c0' target='_blank'>(주)텔레칩스</a></div>`)[0];
+                popup_7ce54d77ef6d4b51bdc5d744da5920dc.setContent(html_de6428656bcef291e2fd4ff1a657d868);
+            
+        
+
+        marker_3e9a54161dc4e7b44bebea096f857fe4.bindPopup(popup_7ce54d77ef6d4b51bdc5d744da5920dc)
+        ;
+
+        
+    
+    
+            var marker_b8858649464d165106bbce88a484b34d = L.marker(
+                [37.507, 127.0587],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_119543b219688713057f950e25f296fb = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_c0252c37c01704021f4d32e911e74e0e = $(`<div id="html_c0252c37c01704021f4d32e911e74e0e" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/2ab60b737d214f13aebc28ff1857e334' target='_blank'>현대오토에버(주)</a></div>`)[0];
+                popup_119543b219688713057f950e25f296fb.setContent(html_c0252c37c01704021f4d32e911e74e0e);
+            
+        
+
+        marker_b8858649464d165106bbce88a484b34d.bindPopup(popup_119543b219688713057f950e25f296fb)
+        ;
+
+        
+    
+    
+            var marker_252cc55619fc30d7514f37922839a306 = L.marker(
+                [37.46436, 127.0427],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_1c75592ac04fa3771f4121440bb6ef57 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_8c2638ad4e5d7ddb2e5f64e89692acb7 = $(`<div id="html_8c2638ad4e5d7ddb2e5f64e89692acb7" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/2bd689c96f9643fcb802b20d7a74df3a' target='_blank'>현대자동차(주)</a></div>`)[0];
+                popup_1c75592ac04fa3771f4121440bb6ef57.setContent(html_8c2638ad4e5d7ddb2e5f64e89692acb7);
+            
+        
+
+        marker_252cc55619fc30d7514f37922839a306.bindPopup(popup_1c75592ac04fa3771f4121440bb6ef57)
+        ;
+
+        
+    
+    
+            var marker_0bef2d284440b55c9aae45121d07d27f = L.marker(
+                [37.52611, 126.9187],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_a7375417130e6a53482e4d9325efef8a = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_d8c14ac0e59e09ed2632e3ac064c9031 = $(`<div id="html_d8c14ac0e59e09ed2632e3ac064c9031" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/d36e1814b50c49188bb109ecb6a18bb0' target='_blank'>로스웰</a></div>`)[0];
+                popup_a7375417130e6a53482e4d9325efef8a.setContent(html_d8c14ac0e59e09ed2632e3ac064c9031);
+            
+        
+
+        marker_0bef2d284440b55c9aae45121d07d27f.bindPopup(popup_a7375417130e6a53482e4d9325efef8a)
+        ;
+
+        
+    
+    
+            var marker_3b7ef461af84433e5d0b15732ce3d353 = L.marker(
+                [37.40017, 127.1123],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_0d5f0bd25a75403573694a6984a95e65 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_aba795e59543b4b69c9e6f7effc5bdf4 = $(`<div id="html_aba795e59543b4b69c9e6f7effc5bdf4" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/d498d519cf3e4a41abd053624b21b652' target='_blank'>(주)켐트로닉스</a></div>`)[0];
+                popup_0d5f0bd25a75403573694a6984a95e65.setContent(html_aba795e59543b4b69c9e6f7effc5bdf4);
+            
+        
+
+        marker_3b7ef461af84433e5d0b15732ce3d353.bindPopup(popup_0d5f0bd25a75403573694a6984a95e65)
+        ;
+
+        
+    
+    
+            var marker_789ec248017748950a7cd42b8d1b9657 = L.marker(
+                [37.40523, 127.1011],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_ed7bdcc3b4df9f66836b8bd56212f04d = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_c393e4a069e255beff90c98413ad3b12 = $(`<div id="html_c393e4a069e255beff90c98413ad3b12" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/10cf759a3e3f429a9afdbc7b3058a3cd' target='_blank'>보스반도체</a></div>`)[0];
+                popup_ed7bdcc3b4df9f66836b8bd56212f04d.setContent(html_c393e4a069e255beff90c98413ad3b12);
+            
+        
+
+        marker_789ec248017748950a7cd42b8d1b9657.bindPopup(popup_ed7bdcc3b4df9f66836b8bd56212f04d)
+        ;
+
+        
+    
+    
+            var marker_87cfb73aa3980312cf109eb975c90027 = L.marker(
+                [37.30034, 127.0718],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_632fc8002096f522498203c120c194a0 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_3a6a600fe22df0935de5d6c1e780eb2d = $(`<div id="html_3a6a600fe22df0935de5d6c1e780eb2d" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/182fa075dbea4d03bfe2550fab7f332c' target='_blank'>(주)세코닉스</a></div>`)[0];
+                popup_632fc8002096f522498203c120c194a0.setContent(html_3a6a600fe22df0935de5d6c1e780eb2d);
+            
+        
+
+        marker_87cfb73aa3980312cf109eb975c90027.bindPopup(popup_632fc8002096f522498203c120c194a0)
+        ;
+
+        
+    
+    
+            var marker_167133d32ea2f6573f057c5e3495f72a = L.marker(
+                [36.95525, 126.8553],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_a52a8242d0dcc39149723f81fdec19d0 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_42ca5b632fbdc0b85574bc95c3a4d75e = $(`<div id="html_42ca5b632fbdc0b85574bc95c3a4d75e" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/87df2a65e21d4b7f8ced539eb469ae0d' target='_blank'>에이치엘만도(주)</a></div>`)[0];
+                popup_a52a8242d0dcc39149723f81fdec19d0.setContent(html_42ca5b632fbdc0b85574bc95c3a4d75e);
+            
+        
+
+        marker_167133d32ea2f6573f057c5e3495f72a.bindPopup(popup_a52a8242d0dcc39149723f81fdec19d0)
+        ;
+
+        
+    
+    
+            var marker_d747163a5ef50313991a12770b5d1e08 = L.marker(
+                [37.5651, 126.987],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_96c429f953453b1576791149b2460c9a = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_bb1821b23a013bff53cae809094c3275 = $(`<div id="html_bb1821b23a013bff53cae809094c3275" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/eeeeaf64f32c4224abccd47c47e6a1b7' target='_blank'>티맵모빌리티</a></div>`)[0];
+                popup_96c429f953453b1576791149b2460c9a.setContent(html_bb1821b23a013bff53cae809094c3275);
+            
+        
+
+        marker_d747163a5ef50313991a12770b5d1e08.bindPopup(popup_96c429f953453b1576791149b2460c9a)
+        ;
+
+        
+    
+    
+            var marker_f7a805b3ac8984c24875a93793d0fab9 = L.marker(
+                [37.40054, 127.1013],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_f448ceac81a3dd28c852f98abae3feb5 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_7bc6da4dcd4727ac8355e3d83edfa4b5 = $(`<div id="html_7bc6da4dcd4727ac8355e3d83edfa4b5" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/b591cd3f410c4e66bd6de416dbb8d0cb' target='_blank'>(주)긴트</a></div>`)[0];
+                popup_f448ceac81a3dd28c852f98abae3feb5.setContent(html_7bc6da4dcd4727ac8355e3d83edfa4b5);
+            
+        
+
+        marker_f7a805b3ac8984c24875a93793d0fab9.bindPopup(popup_f448ceac81a3dd28c852f98abae3feb5)
+        ;
+
+        
+    
+    
+            var marker_aefd106d071daab3c4ae75a74b68156b = L.marker(
+                [35.15894, 128.5516],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_f69420b82edf00a1e13923aa00c886ea = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_41140a8ec341c545b831558fbd6b7f24 = $(`<div id="html_41140a8ec341c545b831558fbd6b7f24" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/b8b26ee2d39f4f8b8e737a4c40f129d2' target='_blank'>덴소코리아(주)</a></div>`)[0];
+                popup_f69420b82edf00a1e13923aa00c886ea.setContent(html_41140a8ec341c545b831558fbd6b7f24);
+            
+        
+
+        marker_aefd106d071daab3c4ae75a74b68156b.bindPopup(popup_f69420b82edf00a1e13923aa00c886ea)
+        ;
+
+        
+    
+    
+            var marker_431cc08a847000fb0beeb8ad9dc9d221 = L.marker(
+                [36.44208, 127.4034],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_0cd8356df23626090eab04391edd064c = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_cb7828116ed5de151bbaad16a2ec9b9e = $(`<div id="html_cb7828116ed5de151bbaad16a2ec9b9e" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/e7111cc2999a4b7b8260036636a34895' target='_blank'>로버트보쉬코리아</a></div>`)[0];
+                popup_0cd8356df23626090eab04391edd064c.setContent(html_cb7828116ed5de151bbaad16a2ec9b9e);
+            
+        
+
+        marker_431cc08a847000fb0beeb8ad9dc9d221.bindPopup(popup_0cd8356df23626090eab04391edd064c)
+        ;
+
+        
+    
+    
+            var marker_30027ea266abd7299a54c72150227426 = L.marker(
+                [35.82358, 128.5111],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_8b4e6b8e210fd102ffad9ac0b0bca1f9 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_ee53baf7bd5e29caec4e34c3580449be = $(`<div id="html_ee53baf7bd5e29caec4e34c3580449be" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/d8740d014c914c688973c383d6d2a994' target='_blank'>디젠</a></div>`)[0];
+                popup_8b4e6b8e210fd102ffad9ac0b0bca1f9.setContent(html_ee53baf7bd5e29caec4e34c3580449be);
+            
+        
+
+        marker_30027ea266abd7299a54c72150227426.bindPopup(popup_8b4e6b8e210fd102ffad9ac0b0bca1f9)
+        ;
+
+        
+    
+    
+            var marker_54492a2b0514fbe8660af290d9d067d0 = L.marker(
+                [37.35223, 126.9587],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_5f0bc5ef7e646c86e6ee1c46105de2af = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_e086b509227d58c9b35e7e4f0b5df106 = $(`<div id="html_e086b509227d58c9b35e7e4f0b5df106" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/c9dfc277825f460cab42016f51ca1020' target='_blank'>현대케피코</a></div>`)[0];
+                popup_5f0bc5ef7e646c86e6ee1c46105de2af.setContent(html_e086b509227d58c9b35e7e4f0b5df106);
+            
+        
+
+        marker_54492a2b0514fbe8660af290d9d067d0.bindPopup(popup_5f0bc5ef7e646c86e6ee1c46105de2af)
+        ;
+
+        
+    
+    
+            var marker_78ddf9da1711b316aa106f18b7d0d60f = L.marker(
+                [37.40349, 127.1016],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_61478b6cd93026993aee3f1cf9cf9c28 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_8a3ecb9e8957660dfccfe673c7ccd14e = $(`<div id="html_8a3ecb9e8957660dfccfe673c7ccd14e" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/571b31d75b8a430bacc4222c610f4d6f' target='_blank'>사피온코리아</a></div>`)[0];
+                popup_61478b6cd93026993aee3f1cf9cf9c28.setContent(html_8a3ecb9e8957660dfccfe673c7ccd14e);
+            
+        
+
+        marker_78ddf9da1711b316aa106f18b7d0d60f.bindPopup(popup_61478b6cd93026993aee3f1cf9cf9c28)
+        ;
+
+        
+    
+    
+            var marker_ae4f646cb7c6a12ada398780a161af8e = L.marker(
+                [37.54239, 127.0486],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_4245217b8e93267106351a8e778312b4 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_c7b5f348c1e754e78e55aa3ca8e8c0a6 = $(`<div id="html_c7b5f348c1e754e78e55aa3ca8e8c0a6" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/19c5b99dfc064e95aead5421a26612dc' target='_blank'>드림에이스</a></div>`)[0];
+                popup_4245217b8e93267106351a8e778312b4.setContent(html_c7b5f348c1e754e78e55aa3ca8e8c0a6);
+            
+        
+
+        marker_ae4f646cb7c6a12ada398780a161af8e.bindPopup(popup_4245217b8e93267106351a8e778312b4)
+        ;
+
+        
+    
+    
+            var marker_78df5c8beed8e8e498ed693e34b4e0fa = L.marker(
+                [37.32367, 126.9523],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_5b0929fc27665f722a69bb63098bb9e0 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_ffc208c5678c31f486617b14a1a5ae44 = $(`<div id="html_ffc208c5678c31f486617b14a1a5ae44" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/1ef20d9c981340f6a73def9778a79ddc' target='_blank'>현대위아(주)</a></div>`)[0];
+                popup_5b0929fc27665f722a69bb63098bb9e0.setContent(html_ffc208c5678c31f486617b14a1a5ae44);
+            
+        
+
+        marker_78df5c8beed8e8e498ed693e34b4e0fa.bindPopup(popup_5b0929fc27665f722a69bb63098bb9e0)
+        ;
+
+        
+    
+    
+            var marker_ffda405e34a96f37ee770313eea9436e = L.marker(
+                [37.48586, 127.1148],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_2458141534d9c83502d10623bc24fe33 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_9c3f3be1b38d2fdac6b9998e135359c2 = $(`<div id="html_9c3f3be1b38d2fdac6b9998e135359c2" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/d4145beda1fa425d9f5755128899a69b' target='_blank'>(주)코아시아넥셀</a></div>`)[0];
+                popup_2458141534d9c83502d10623bc24fe33.setContent(html_9c3f3be1b38d2fdac6b9998e135359c2);
+            
+        
+
+        marker_ffda405e34a96f37ee770313eea9436e.bindPopup(popup_2458141534d9c83502d10623bc24fe33)
+        ;
+
+        
+    
+    
+            var marker_116a33029197e3d55d36543ccfe3ebc3 = L.marker(
+                [37.4884, 127.1218],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_78defc9480f3d9d1096d1a0bba8524e0 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_df6c5683a6f7a1470c9847066bb672c3 = $(`<div id="html_df6c5683a6f7a1470c9847066bb672c3" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/4114320d27ad448890c7adbca0e68780' target='_blank'>아이에이</a></div>`)[0];
+                popup_78defc9480f3d9d1096d1a0bba8524e0.setContent(html_df6c5683a6f7a1470c9847066bb672c3);
+            
+        
+
+        marker_116a33029197e3d55d36543ccfe3ebc3.bindPopup(popup_78defc9480f3d9d1096d1a0bba8524e0)
+        ;
+
+        
+    
+    
+            var marker_8ef7c66d7261a302fd901f293b6bbdeb = L.marker(
+                [37.32103, 126.765],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_2f816b876873e7d54fb896d9a8035716 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_6726a1c467c2ab7f5725f91fb9a94ca6 = $(`<div id="html_6726a1c467c2ab7f5725f91fb9a94ca6" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/353ee00bd32e4c519f63c8fa276ee895' target='_blank'>태양금속공업(주)</a></div>`)[0];
+                popup_2f816b876873e7d54fb896d9a8035716.setContent(html_6726a1c467c2ab7f5725f91fb9a94ca6);
+            
+        
+
+        marker_8ef7c66d7261a302fd901f293b6bbdeb.bindPopup(popup_2f816b876873e7d54fb896d9a8035716)
+        ;
+
+        
+    
+    
+            var marker_73e4cef2bd94a11fb2dcae3ce68c1070 = L.marker(
+                [35.30059, 129.1368],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_4fcbfb7003731b0181da24929a93870c = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_07a9859ed5bdf6f4538d13c59f856d16 = $(`<div id="html_07a9859ed5bdf6f4538d13c59f856d16" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/SNT-322f2287f4cb46b48ae110b470f54542' target='_blank'>SNT모티브</a></div>`)[0];
+                popup_4fcbfb7003731b0181da24929a93870c.setContent(html_07a9859ed5bdf6f4538d13c59f856d16);
+            
+        
+
+        marker_73e4cef2bd94a11fb2dcae3ce68c1070.bindPopup(popup_4fcbfb7003731b0181da24929a93870c)
+        ;
+
+        
+    
+    
+            var marker_292e1c619f07e7360fe53b14b276895f = L.marker(
+                [37.40277, 127.1081],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_d49970e5035dab1108d3c698488b2c85 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_c587338649fc22f6208f052b5ccf7c31 = $(`<div id="html_c587338649fc22f6208f052b5ccf7c31" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/cc718c849ebf47b5b06a935134633d12?pvs=25' target='_blank'>유라코퍼레이션</a></div>`)[0];
+                popup_d49970e5035dab1108d3c698488b2c85.setContent(html_c587338649fc22f6208f052b5ccf7c31);
+            
+        
+
+        marker_292e1c619f07e7360fe53b14b276895f.bindPopup(popup_d49970e5035dab1108d3c698488b2c85)
+        ;
+
+        
+    
+    
+            var marker_e8c3b24a5ca5e744ed8a5e9a4b1e3bb2 = L.marker(
+                [37.32452, 126.7808],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_a3b6f983b4c3afff0630eab317ac93a6 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_0c2169a3826ec242024c40078a6413cd = $(`<div id="html_0c2169a3826ec242024c40078a6413cd" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/ee444cfce47b475dab0f4ee6331e6318' target='_blank'>발레오오토모티브코리아</a></div>`)[0];
+                popup_a3b6f983b4c3afff0630eab317ac93a6.setContent(html_0c2169a3826ec242024c40078a6413cd);
+            
+        
+
+        marker_e8c3b24a5ca5e744ed8a5e9a4b1e3bb2.bindPopup(popup_a3b6f983b4c3afff0630eab317ac93a6)
+        ;
+
+        
+    
+    
+            var marker_64b096ab498a9db57ec67869c271924f = L.marker(
+                [37.23743, 126.9846],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_83b149e0508219a39a04237eeffe5b72 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_0caeb4b6190531f446064029f3c16e92 = $(`<div id="html_0caeb4b6190531f446064029f3c16e92" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/961b07ef010543c1b2ad3986d9705767' target='_blank'>모베이스전자</a></div>`)[0];
+                popup_83b149e0508219a39a04237eeffe5b72.setContent(html_0caeb4b6190531f446064029f3c16e92);
+            
+        
+
+        marker_64b096ab498a9db57ec67869c271924f.bindPopup(popup_83b149e0508219a39a04237eeffe5b72)
+        ;
+
+        
+    
+    
+            var marker_2000bae6e2f07b4ffc9471b562454102 = L.marker(
+                [37.29384, 127.0494],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_1d863d13908d883c8f7d45f6736a2931 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_456e34a214c9f481e2555213e7c8fb45 = $(`<div id="html_456e34a214c9f481e2555213e7c8fb45" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/461c372bddf34840bc2ec763c08f9e62' target='_blank'>피에이치에이(구 평화정공)</a></div>`)[0];
+                popup_1d863d13908d883c8f7d45f6736a2931.setContent(html_456e34a214c9f481e2555213e7c8fb45);
+            
+        
+
+        marker_2000bae6e2f07b4ffc9471b562454102.bindPopup(popup_1d863d13908d883c8f7d45f6736a2931)
+        ;
+
+        
+    
+    
+            var marker_9f0299b7632c6e5053e0ef7605ff93d1 = L.marker(
+                [37.40047, 127.1068],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_110106477a7be796ec13ab00b0c249a3 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_1bb27817cd6f65a9ae18b23228027298 = $(`<div id="html_1bb27817cd6f65a9ae18b23228027298" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/a0781917a543444a9384f320f2410125' target='_blank'>(주)넥스트칩</a></div>`)[0];
+                popup_110106477a7be796ec13ab00b0c249a3.setContent(html_1bb27817cd6f65a9ae18b23228027298);
+            
+        
+
+        marker_9f0299b7632c6e5053e0ef7605ff93d1.bindPopup(popup_110106477a7be796ec13ab00b0c249a3)
+        ;
+
+        
+    
+    
+            var marker_aa89d21632081ca4845759e8bbf8969b = L.marker(
+                [37.56322, 126.8367],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_58d8d4952ea5306c9ac25f0e4df95d5c = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_06569c0c0c5e4b6e79da5eb7c6f7478d = $(`<div id="html_06569c0c0c5e4b6e79da5eb7c6f7478d" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/d44f7d05249b4cad944562090c9a4f9f' target='_blank'>센서텍(주)</a></div>`)[0];
+                popup_58d8d4952ea5306c9ac25f0e4df95d5c.setContent(html_06569c0c0c5e4b6e79da5eb7c6f7478d);
+            
+        
+
+        marker_aa89d21632081ca4845759e8bbf8969b.bindPopup(popup_58d8d4952ea5306c9ac25f0e4df95d5c)
+        ;
+
+        
+    
+    
+            var marker_83f92b72894fee8a7f66af271fb353db = L.marker(
+                [37.48527, 127.0366],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_b2fbc0cf0612ffcde6121617fc14b87b = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_41449955ec1839a69ec389ff7941593e = $(`<div id="html_41449955ec1839a69ec389ff7941593e" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/LX-ff01de496afb46be874713e9b3be63b2' target='_blank'>LX세미콘</a></div>`)[0];
+                popup_b2fbc0cf0612ffcde6121617fc14b87b.setContent(html_41449955ec1839a69ec389ff7941593e);
+            
+        
+
+        marker_83f92b72894fee8a7f66af271fb353db.bindPopup(popup_b2fbc0cf0612ffcde6121617fc14b87b)
+        ;
+
+        
+    
+    
+            var marker_6a67506cec16d9b2118cd919399eea67 = L.marker(
+                [37.47684, 126.9765],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_f1997747ddf6ef72b9c2550e23ff1d59 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_8c14c7cd10d3eec23f6161e56b94eb6d = $(`<div id="html_8c14c7cd10d3eec23f6161e56b94eb6d" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/5a33622be27a4edd92f50aaa9d53a3ce' target='_blank'>(주)네오티스</a></div>`)[0];
+                popup_f1997747ddf6ef72b9c2550e23ff1d59.setContent(html_8c14c7cd10d3eec23f6161e56b94eb6d);
+            
+        
+
+        marker_6a67506cec16d9b2118cd919399eea67.bindPopup(popup_f1997747ddf6ef72b9c2550e23ff1d59)
+        ;
+
+        
+    
+    
+            var marker_0197189fb8c86ad9e63ffd52af6cdc47 = L.marker(
+                [37.1821, 127.0877],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_343eb1efd4ccd6d8383337c8613f1dfd = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_c5c9ebf36a639bb1ca7ac390f3078932 = $(`<div id="html_c5c9ebf36a639bb1ca7ac390f3078932" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/5da956914bb64cffa0ce2591cd8f4aa0' target='_blank'>덕일산업</a></div>`)[0];
+                popup_343eb1efd4ccd6d8383337c8613f1dfd.setContent(html_c5c9ebf36a639bb1ca7ac390f3078932);
+            
+        
+
+        marker_0197189fb8c86ad9e63ffd52af6cdc47.bindPopup(popup_343eb1efd4ccd6d8383337c8613f1dfd)
+        ;
+
+        
+    
+    
+            var marker_d41212c4c943bc9de2f0ccdcc238f356 = L.marker(
+                [37.24955, 127.1308],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_e11aa4cefa0d06c1433f46c008a0338d = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_95242e88ff6dbc376e3c4e495588db4e = $(`<div id="html_95242e88ff6dbc376e3c4e495588db4e" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/75e55712d1b941c2b255575f7c55cc2a' target='_blank'>우리산업홀딩스(주)</a></div>`)[0];
+                popup_e11aa4cefa0d06c1433f46c008a0338d.setContent(html_95242e88ff6dbc376e3c4e495588db4e);
+            
+        
+
+        marker_d41212c4c943bc9de2f0ccdcc238f356.bindPopup(popup_e11aa4cefa0d06c1433f46c008a0338d)
+        ;
+
+        
+    
+    
+            var marker_0146f2632db2cf9099bdbc7e3b84ed14 = L.marker(
+                [37.40047, 127.1068],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_bc1f41067f94bb8847096d870f0d563b = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_c17d324a1103d6e3c129aa261eb22d78 = $(`<div id="html_c17d324a1103d6e3c129aa261eb22d78" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/f612db9ee1a744d3aa80b0c50ae28e40' target='_blank'>이타스코리아(주)</a></div>`)[0];
+                popup_bc1f41067f94bb8847096d870f0d563b.setContent(html_c17d324a1103d6e3c129aa261eb22d78);
+            
+        
+
+        marker_0146f2632db2cf9099bdbc7e3b84ed14.bindPopup(popup_bc1f41067f94bb8847096d870f0d563b)
+        ;
+
+        
+    
+    
+            var marker_7b136894b80bae38f4a6af04ac13b826 = L.marker(
+                [37.52519, 126.9291],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_4cd107f57d26fe3fd85b84879b284741 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_6ea002ee8598cb038fdc44ce2f449b6a = $(`<div id="html_6ea002ee8598cb038fdc44ce2f449b6a" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/LG-0132f967eb9c4ac1876601926907661d' target='_blank'>(주)LG에너지솔루션</a></div>`)[0];
+                popup_4cd107f57d26fe3fd85b84879b284741.setContent(html_6ea002ee8598cb038fdc44ce2f449b6a);
+            
+        
+
+        marker_7b136894b80bae38f4a6af04ac13b826.bindPopup(popup_4cd107f57d26fe3fd85b84879b284741)
+        ;
+
+        
+    
+    
+            var marker_1fc26dd2ef91aa5bde74d9d62e0d41fe = L.marker(
+                [35.92773, 128.9444],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_bd53187ae023ee6f2f235247fd2fefb7 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_f896ec523d8a3fd3575ce52f4da24f6b = $(`<div id="html_f896ec523d8a3fd3575ce52f4da24f6b" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/77afdf31bf29442bb1301fe3af852ee2' target='_blank'>화신</a></div>`)[0];
+                popup_bd53187ae023ee6f2f235247fd2fefb7.setContent(html_f896ec523d8a3fd3575ce52f4da24f6b);
+            
+        
+
+        marker_1fc26dd2ef91aa5bde74d9d62e0d41fe.bindPopup(popup_bd53187ae023ee6f2f235247fd2fefb7)
+        ;
+
+        
+    
+    
+            var marker_18e17cdd7e808bccae788a0247d5dae9 = L.marker(
+                [35.86832, 128.8367],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_6ef6120a107023618ebc9a1f48ef248b = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_f03414ae5cc1dbe031081b49bbde7e95 = $(`<div id="html_f03414ae5cc1dbe031081b49bbde7e95" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/9e74c73715914643886b612633b01bc8' target='_blank'>아진산업</a></div>`)[0];
+                popup_6ef6120a107023618ebc9a1f48ef248b.setContent(html_f03414ae5cc1dbe031081b49bbde7e95);
+            
+        
+
+        marker_18e17cdd7e808bccae788a0247d5dae9.bindPopup(popup_6ef6120a107023618ebc9a1f48ef248b)
+        ;
+
+        
+    
+    
+            var marker_62978e04347400bc3ce04925818e885a = L.marker(
+                [35.61175, 126.8435],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_d87da696fb24b602211047d327e7e449 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_e60496b3a85961ac18ae3e86ed34c298 = $(`<div id="html_e60496b3a85961ac18ae3e86ed34c298" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/c3bf1260efac4f598a3aa7e93ddaaf61' target='_blank'>대우전자부품(주)</a></div>`)[0];
+                popup_d87da696fb24b602211047d327e7e449.setContent(html_e60496b3a85961ac18ae3e86ed34c298);
+            
+        
+
+        marker_62978e04347400bc3ce04925818e885a.bindPopup(popup_d87da696fb24b602211047d327e7e449)
+        ;
+
+        
+    
+    
+            var marker_845973743b748427a2ddce322d669ffe = L.marker(
+                [36.39286, 127.4034],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_f7853f0e97cdd158e10ecd9f62770766 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_024d1157243755535f0548b86bb7b4d9 = $(`<div id="html_024d1157243755535f0548b86bb7b4d9" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/3aca50e714dd43569a95181f3a8e2229' target='_blank'>트루윈</a></div>`)[0];
+                popup_f7853f0e97cdd158e10ecd9f62770766.setContent(html_024d1157243755535f0548b86bb7b4d9);
+            
+        
+
+        marker_845973743b748427a2ddce322d669ffe.bindPopup(popup_f7853f0e97cdd158e10ecd9f62770766)
+        ;
+
+        
+    
+    
+            var marker_290d2f9e00d0077e2fb75b1c465a8135 = L.marker(
+                [37.24955, 127.1308],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_7e6535b492eb9b174c7521392a0e394b = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_95687394c83d4a107e951dfff066da1e = $(`<div id="html_95687394c83d4a107e951dfff066da1e" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/82c378151afb4c7393db8e61ec124e98' target='_blank'>우리산업</a></div>`)[0];
+                popup_7e6535b492eb9b174c7521392a0e394b.setContent(html_95687394c83d4a107e951dfff066da1e);
+            
+        
+
+        marker_290d2f9e00d0077e2fb75b1c465a8135.bindPopup(popup_7e6535b492eb9b174c7521392a0e394b)
+        ;
+
+        
+    
+    
+            var marker_37a2dbfee7f14a8266096d20bef4f58a = L.marker(
+                [37.56967, 126.9822],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_c66b5d213bdc453fad4905f5d6825a60 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_8ae8fde1cb1d394aa974ca8fd879c8c5 = $(`<div id="html_8ae8fde1cb1d394aa974ca8fd879c8c5" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/47bd7a773e3e43ed96a6e9ece1a0f1a1' target='_blank'>모토닉</a></div>`)[0];
+                popup_c66b5d213bdc453fad4905f5d6825a60.setContent(html_8ae8fde1cb1d394aa974ca8fd879c8c5);
+            
+        
+
+        marker_37a2dbfee7f14a8266096d20bef4f58a.bindPopup(popup_c66b5d213bdc453fad4905f5d6825a60)
+        ;
+
+        
+    
+    
+            var marker_643fcb374f787ad0fb37b211ccd1621e = L.marker(
+                [37.51076, 127.1129],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_13cea67e44339491bbf8f4cfd8a9be0e = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_f25df4b2d5f49b06f216a045cbff21e0 = $(`<div id="html_f25df4b2d5f49b06f216a045cbff21e0" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/745e2290b17743bb9919b733a4deb28c' target='_blank'>인팩</a></div>`)[0];
+                popup_13cea67e44339491bbf8f4cfd8a9be0e.setContent(html_f25df4b2d5f49b06f216a045cbff21e0);
+            
+        
+
+        marker_643fcb374f787ad0fb37b211ccd1621e.bindPopup(popup_13cea67e44339491bbf8f4cfd8a9be0e)
+        ;
+
+        
+    
+    
+            var marker_ed2407fe38cd094c308ab2497be35c31 = L.marker(
+                [37.31273, 126.7818],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_3e820fc3e33cb800734844ad71495c7a = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_17819cdf9b970bce3b28f591f9050670 = $(`<div id="html_17819cdf9b970bce3b28f591f9050670" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/860cb8cb98a84779911efb2fda5703b0' target='_blank'>대원산업</a></div>`)[0];
+                popup_3e820fc3e33cb800734844ad71495c7a.setContent(html_17819cdf9b970bce3b28f591f9050670);
+            
+        
+
+        marker_ed2407fe38cd094c308ab2497be35c31.bindPopup(popup_3e820fc3e33cb800734844ad71495c7a)
+        ;
+
+        
+    
+    
+            var marker_3c50d050c09880c5db5b73d6b3681697 = L.marker(
+                [35.32475, 129.2566],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_3383c3dfb101ebdeb551bb683811e4ed = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_83e625f4e9039e9c78961c84aadf3147 = $(`<div id="html_83e625f4e9039e9c78961c84aadf3147" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/0dcb0f821a0a4751a79db83025221433' target='_blank'>효성전기</a></div>`)[0];
+                popup_3383c3dfb101ebdeb551bb683811e4ed.setContent(html_83e625f4e9039e9c78961c84aadf3147);
+            
+        
+
+        marker_3c50d050c09880c5db5b73d6b3681697.bindPopup(popup_3383c3dfb101ebdeb551bb683811e4ed)
+        ;
+
+        
+    
+    
+            var marker_d046223e474e050b75097829cb2bf3dd = L.marker(
+                [35.38227, 129.0195],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_6afc39dc67296e999f3a22967ad97e02 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_9e83e24b9a54e01b351c6326dac35232 = $(`<div id="html_9e83e24b9a54e01b351c6326dac35232" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/2368494afbbc406a905c26baccf139bd' target='_blank'>코렌스</a></div>`)[0];
+                popup_6afc39dc67296e999f3a22967ad97e02.setContent(html_9e83e24b9a54e01b351c6326dac35232);
+            
+        
+
+        marker_d046223e474e050b75097829cb2bf3dd.bindPopup(popup_6afc39dc67296e999f3a22967ad97e02)
+        ;
+
+        
+    
+    
+            var marker_517c6a139c1490f2f01a8ab95e5e5a81 = L.marker(
+                [37.13225, 126.9862],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_b4fa0f326906571169333737c2d032eb = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_9597ceec58585ec1664a51127288c655 = $(`<div id="html_9597ceec58585ec1664a51127288c655" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/6eaff73785c6407c9ff4175973a367aa' target='_blank'>모토닉스</a></div>`)[0];
+                popup_b4fa0f326906571169333737c2d032eb.setContent(html_9597ceec58585ec1664a51127288c655);
+            
+        
+
+        marker_517c6a139c1490f2f01a8ab95e5e5a81.bindPopup(popup_b4fa0f326906571169333737c2d032eb)
+        ;
+
+        
+    
+    
+            var marker_40d8e6effe34ad43dc0b08d703b9baec = L.marker(
+                [37.41213, 127.095],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_db86edae2bce00f5826be092fd707417 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_d615bf16de1112fa439b97cb5b5402b7 = $(`<div id="html_d615bf16de1112fa439b97cb5b5402b7" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/ff43d47557a244ddaf2f6373e2d3f3f2' target='_blank'>네오펙트</a></div>`)[0];
+                popup_db86edae2bce00f5826be092fd707417.setContent(html_d615bf16de1112fa439b97cb5b5402b7);
+            
+        
+
+        marker_40d8e6effe34ad43dc0b08d703b9baec.bindPopup(popup_db86edae2bce00f5826be092fd707417)
+        ;
+
+        
+    
+    
+            var marker_abd6e78ad9bc1cee3d5f667659b17feb = L.marker(
+                [37.06492, 127.4241],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_6b7d4bf4d92fa29c7bfec0c57398117b = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_4f0881a1578142516f3766546470b432 = $(`<div id="html_4f0881a1578142516f3766546470b432" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/7453bc2df6894481b0c49e7617c7e9d7' target='_blank'>두원중공업</a></div>`)[0];
+                popup_6b7d4bf4d92fa29c7bfec0c57398117b.setContent(html_4f0881a1578142516f3766546470b432);
+            
+        
+
+        marker_abd6e78ad9bc1cee3d5f667659b17feb.bindPopup(popup_6b7d4bf4d92fa29c7bfec0c57398117b)
+        ;
+
+        
+    
+    
+            var marker_4fb8c9ffbde4f23032b62871adcadc79 = L.marker(
+                [37.22173, 127.0737],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_0c71933289fae1cc5e749da4c9aa5ae5 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_bd920d5babb2355b8290807df67f9cc5 = $(`<div id="html_bd920d5babb2355b8290807df67f9cc5" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/570869dce8e3415aa5532124b989a5e5' target='_blank'>글로우원</a></div>`)[0];
+                popup_0c71933289fae1cc5e749da4c9aa5ae5.setContent(html_bd920d5babb2355b8290807df67f9cc5);
+            
+        
+
+        marker_4fb8c9ffbde4f23032b62871adcadc79.bindPopup(popup_0c71933289fae1cc5e749da4c9aa5ae5)
+        ;
+
+        
+    
+    
+            var marker_4e8698539c510c51bc4c96968adf2a85 = L.marker(
+                [36.43715, 127.4088],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_39b4f1ee3912ebef8fbf934dfb12bc97 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_b6788a126ab8d0f40f9c6e04e032223f = $(`<div id="html_b6788a126ab8d0f40f9c6e04e032223f" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/bdb178f3d1c342d49b4f14d2a645eb25' target='_blank'>한온시스템(주)</a></div>`)[0];
+                popup_39b4f1ee3912ebef8fbf934dfb12bc97.setContent(html_b6788a126ab8d0f40f9c6e04e032223f);
+            
+        
+
+        marker_4e8698539c510c51bc4c96968adf2a85.bindPopup(popup_39b4f1ee3912ebef8fbf934dfb12bc97)
+        ;
+
+        
+    
+    
+            var marker_2873f21dc7824b32b3d08156689c0adb = L.marker(
+                [37.13188, 126.9864],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_ca781b2ed46469e689794d6bacd38d3f = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_88e843b147353bfb21c5a08d763f4d42 = $(`<div id="html_88e843b147353bfb21c5a08d763f4d42" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/8ee5dbde648a450db06b3f8ad6ade60d' target='_blank'>https://www.saramin.co.kr/zf_user/company-info/view?csn=czJtVlBEd3FPR3NVVTVHTURVYkNSZz09&popup_yn=y주)모토텍</a></div>`)[0];
+                popup_ca781b2ed46469e689794d6bacd38d3f.setContent(html_88e843b147353bfb21c5a08d763f4d42);
+            
+        
+
+        marker_2873f21dc7824b32b3d08156689c0adb.bindPopup(popup_ca781b2ed46469e689794d6bacd38d3f)
+        ;
+
+        
+    
+    
+            var marker_3d69689d1b87c7f16328231e4d881ae4 = L.marker(
+                [37.40188, 126.9667],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_4f88eb32f030789ec3894c63bc646c04 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_75dcca0683aca6e4c7e6d824375dab32 = $(`<div id="html_75dcca0683aca6e4c7e6d824375dab32" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/83dea7cf685a415b9aae1c43a6c61c35' target='_blank'>다믈파워반도체(유)</a></div>`)[0];
+                popup_4f88eb32f030789ec3894c63bc646c04.setContent(html_75dcca0683aca6e4c7e6d824375dab32);
+            
+        
+
+        marker_3d69689d1b87c7f16328231e4d881ae4.bindPopup(popup_4f88eb32f030789ec3894c63bc646c04)
+        ;
+
+        
+    
+    
+            var marker_a5c36fa1f3ca4e4fc38d8d5ee669095b = L.marker(
+                [35.73365, 128.4503],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_6fee6277483cc70b7a88524bd51f0c52 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_82e7ca6899437faa13524d510d710936 = $(`<div id="html_82e7ca6899437faa13524d510d710936" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/b95ad6274eac49d9967c49e9403cd18e' target='_blank'>에스트라오토모티브시스템(주)</a></div>`)[0];
+                popup_6fee6277483cc70b7a88524bd51f0c52.setContent(html_82e7ca6899437faa13524d510d710936);
+            
+        
+
+        marker_a5c36fa1f3ca4e4fc38d8d5ee669095b.bindPopup(popup_6fee6277483cc70b7a88524bd51f0c52)
+        ;
+
+        
+    
+    
+            var marker_d7fed5b94d20edee3ff00298c9e36fac = L.marker(
+                [37.47609, 126.8801],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_ae70f3ddb8264d57a302d492ef1cfcc7 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_e43762d6a4539ebe3bac9f66ed305386 = $(`<div id="html_e43762d6a4539ebe3bac9f66ed305386" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/b1ac9b12a38d4eb793c50a4e7e0522b4' target='_blank'>(주)세온이앤에스</a></div>`)[0];
+                popup_ae70f3ddb8264d57a302d492ef1cfcc7.setContent(html_e43762d6a4539ebe3bac9f66ed305386);
+            
+        
+
+        marker_d7fed5b94d20edee3ff00298c9e36fac.bindPopup(popup_ae70f3ddb8264d57a302d492ef1cfcc7)
+        ;
+
+        
+    
+    
+            var marker_f8f335975d7ba78cf18c21f7e597985a = L.marker(
+                [37.36112, 126.6531],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_569985cf9749190295a7cd220f68203b = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_228566852a2a3fcd2877b68f84ea3289 = $(`<div id="html_228566852a2a3fcd2877b68f84ea3289" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/ec687d855bee4fcca1b4fbf6817f0cc6' target='_blank'>대동도어</a></div>`)[0];
+                popup_569985cf9749190295a7cd220f68203b.setContent(html_228566852a2a3fcd2877b68f84ea3289);
+            
+        
+
+        marker_f8f335975d7ba78cf18c21f7e597985a.bindPopup(popup_569985cf9749190295a7cd220f68203b)
+        ;
+
+        
+    
+    
+            var marker_005e510a1072d3d996f81e6af5e17bca = L.marker(
+                [37.52498, 126.9253],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_328066df12644b2b350619280e82543e = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_a76f14244368f735992ccfc9ab5625b8 = $(`<div id="html_a76f14244368f735992ccfc9ab5625b8" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/04385f5a47914e9e80c5318cb2e8b9cf' target='_blank'>럭스소프트코리아(유)</a></div>`)[0];
+                popup_328066df12644b2b350619280e82543e.setContent(html_a76f14244368f735992ccfc9ab5625b8);
+            
+        
+
+        marker_005e510a1072d3d996f81e6af5e17bca.bindPopup(popup_328066df12644b2b350619280e82543e)
+        ;
+
+        
+    
+    
+            var marker_1ec3becded243dcad9416d19cd5064cf = L.marker(
+                [35.67949, 128.4598],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_c5a466326b77de7af10e401749d88abb = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_66b4e8e4cb80f45621d65e3e0c9d43e7 = $(`<div id="html_66b4e8e4cb80f45621d65e3e0c9d43e7" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/4c7e72355b02494991bb8a94dd1cf517' target='_blank'>상신브레이크(주)</a></div>`)[0];
+                popup_c5a466326b77de7af10e401749d88abb.setContent(html_66b4e8e4cb80f45621d65e3e0c9d43e7);
+            
+        
+
+        marker_1ec3becded243dcad9416d19cd5064cf.bindPopup(popup_c5a466326b77de7af10e401749d88abb)
+        ;
+
+        
+    
+    
+            var marker_777a996699f211e81c141e99eb6193c4 = L.marker(
+                [37.28002, 127.1194],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_4c6d8af5c26b219306f5cbe9808362d9 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_1b2016136bc604655c7c18f960dbc4aa = $(`<div id="html_1b2016136bc604655c7c18f960dbc4aa" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/90059c68f8de456eb0ed1bfc3f4e5c04' target='_blank'>영화테크</a></div>`)[0];
+                popup_4c6d8af5c26b219306f5cbe9808362d9.setContent(html_1b2016136bc604655c7c18f960dbc4aa);
+            
+        
+
+        marker_777a996699f211e81c141e99eb6193c4.bindPopup(popup_4c6d8af5c26b219306f5cbe9808362d9)
+        ;
+
+        
+    
+    
+            var marker_b3c76aadcbe40b06c4ea55f9b900e6d7 = L.marker(
+                [37.50391, 127.0252],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_723128b19cdc851ad4f0000cb2351cd5 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_3d740cda630bbfbcfe9d9d31db3333b8 = $(`<div id="html_3d740cda630bbfbcfe9d9d31db3333b8" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/9739ca6d05e545758d4343dd608ac717' target='_blank'>(주)스트라드비젼</a></div>`)[0];
+                popup_723128b19cdc851ad4f0000cb2351cd5.setContent(html_3d740cda630bbfbcfe9d9d31db3333b8);
+            
+        
+
+        marker_b3c76aadcbe40b06c4ea55f9b900e6d7.bindPopup(popup_723128b19cdc851ad4f0000cb2351cd5)
+        ;
+
+        
+    
+    
+            var marker_7265821890ab3829904dbb172e11658a = L.marker(
+                [35.14828, 129.0654],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_02dcc9a17a4d72a93d5572057f7a5f3d = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_d1280b28b076e9e3a067865b17aa6177 = $(`<div id="html_d1280b28b076e9e3a067865b17aa6177" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/d8fb991389f045f1a719a8a9037082aa' target='_blank'>(주)모플랫</a></div>`)[0];
+                popup_02dcc9a17a4d72a93d5572057f7a5f3d.setContent(html_d1280b28b076e9e3a067865b17aa6177);
+            
+        
+
+        marker_7265821890ab3829904dbb172e11658a.bindPopup(popup_02dcc9a17a4d72a93d5572057f7a5f3d)
+        ;
+
+        
+    
+    
+            var marker_6eea7dca51bbe48badbed0f93da61eb4 = L.marker(
+                [37.50377, 127.0489],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_fc5c0b243e041d345dde33eaded11d9e = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_ce6f37754654213fe768393d07f5adac = $(`<div id="html_ce6f37754654213fe768393d07f5adac" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/697d744fdbc5427db3d8606406954414' target='_blank'>세방전지</a></div>`)[0];
+                popup_fc5c0b243e041d345dde33eaded11d9e.setContent(html_ce6f37754654213fe768393d07f5adac);
+            
+        
+
+        marker_6eea7dca51bbe48badbed0f93da61eb4.bindPopup(popup_fc5c0b243e041d345dde33eaded11d9e)
+        ;
+
+        
+    
+    
+            var marker_bae50a503ed66f6fb36d14e6cec46047 = L.marker(
+                [37.40132, 126.9648],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_1f5e755cc181dd05ca06b03dc90c24c0 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_78172d200cbeb458ec152a70a369e59e = $(`<div id="html_78172d200cbeb458ec152a70a369e59e" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/19c0177068b442e3b80c5e79cb5fe5cc' target='_blank'>서연이화</a></div>`)[0];
+                popup_1f5e755cc181dd05ca06b03dc90c24c0.setContent(html_78172d200cbeb458ec152a70a369e59e);
+            
+        
+
+        marker_bae50a503ed66f6fb36d14e6cec46047.bindPopup(popup_1f5e755cc181dd05ca06b03dc90c24c0)
+        ;
+
+        
+    
+    
+            var marker_151fb70e13a60dc4f9cb09d1ce055362 = L.marker(
+                [37.01065, 127.1525],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_5a2d1ad09bc6d5eab4f0b8bb41709477 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_8da5d62c86edc15d0b196c632ad14d94 = $(`<div id="html_8da5d62c86edc15d0b196c632ad14d94" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/89fcf1480a5143d6ab17631f44008c04' target='_blank'>코리아에프티</a></div>`)[0];
+                popup_5a2d1ad09bc6d5eab4f0b8bb41709477.setContent(html_8da5d62c86edc15d0b196c632ad14d94);
+            
+        
+
+        marker_151fb70e13a60dc4f9cb09d1ce055362.bindPopup(popup_5a2d1ad09bc6d5eab4f0b8bb41709477)
+        ;
+
+        
+    
+    
+            var marker_34a5856ada6b9d3b35f57c68fd8a143e = L.marker(
+                [35.83445, 128.5058],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_0464cecebde08908a68776245466322d = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_db7c0e6195549607d87334e56cd835c8 = $(`<div id="html_db7c0e6195549607d87334e56cd835c8" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/bbb28d9ba1414ba284337a6db8a7a9a3' target='_blank'>경창산업</a></div>`)[0];
+                popup_0464cecebde08908a68776245466322d.setContent(html_db7c0e6195549607d87334e56cd835c8);
+            
+        
+
+        marker_34a5856ada6b9d3b35f57c68fd8a143e.bindPopup(popup_0464cecebde08908a68776245466322d)
+        ;
+
+        
+    
+    
+            var marker_043994243a70e71d3534076205317a68 = L.marker(
+                [37.50682, 127.058],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_2448e376c18573653cfb5381bf18d1a3 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_f34e0e08be8b2456be938d25969663e1 = $(`<div id="html_f34e0e08be8b2456be938d25969663e1" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/24faf031238b4dfc9890ad0b516a9f78' target='_blank'>계양전기</a></div>`)[0];
+                popup_2448e376c18573653cfb5381bf18d1a3.setContent(html_f34e0e08be8b2456be938d25969663e1);
+            
+        
+
+        marker_043994243a70e71d3534076205317a68.bindPopup(popup_2448e376c18573653cfb5381bf18d1a3)
+        ;
+
+        
+    
+    
+            var marker_fd3805e2fc68fa04a0896ee1056f35f8 = L.marker(
+                [37.52291, 126.8835],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_a2104da5cfa2dce4a3cf3a7b352fa286 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_6698d5f529bb6093c90ad19d625743e7 = $(`<div id="html_6698d5f529bb6093c90ad19d625743e7" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/e421d0f417784f869260f59a779eb5de' target='_blank'>우신시스템</a></div>`)[0];
+                popup_a2104da5cfa2dce4a3cf3a7b352fa286.setContent(html_6698d5f529bb6093c90ad19d625743e7);
+            
+        
+
+        marker_fd3805e2fc68fa04a0896ee1056f35f8.bindPopup(popup_a2104da5cfa2dce4a3cf3a7b352fa286)
+        ;
+
+        
+    
+    
+            var marker_620fe91400d7165c7b8348db2ab86fbc = L.marker(
+                [36.64302, 127.2748],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_af843d8b9e75d37ab555d10622498268 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_71a13a9a4c9f153672397af9ec6e7dbc = $(`<div id="html_71a13a9a4c9f153672397af9ec6e7dbc" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/dce797bdb42f4265bb0670e59477f90b' target='_blank'>유라테크</a></div>`)[0];
+                popup_af843d8b9e75d37ab555d10622498268.setContent(html_71a13a9a4c9f153672397af9ec6e7dbc);
+            
+        
+
+        marker_620fe91400d7165c7b8348db2ab86fbc.bindPopup(popup_af843d8b9e75d37ab555d10622498268)
+        ;
+
+        
+    
+    
+            var marker_4085558144bddb0629db6c0e7a10ebbf = L.marker(
+                [37.33519, 126.7234],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_3263e6ff44481f117298acd313adf00a = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_17cdaf38d48f3b3cdac4d94185145cfb = $(`<div id="html_17cdaf38d48f3b3cdac4d94185145cfb" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/6ef363dd189d46b3b709a95c1913268d' target='_blank'>인지컨트롤스</a></div>`)[0];
+                popup_3263e6ff44481f117298acd313adf00a.setContent(html_17cdaf38d48f3b3cdac4d94185145cfb);
+            
+        
+
+        marker_4085558144bddb0629db6c0e7a10ebbf.bindPopup(popup_3263e6ff44481f117298acd313adf00a)
+        ;
+
+        
+    
+    
+            var marker_e5e069660eeafe588056d4095e9b52ca = L.marker(
+                [37.23743, 126.9846],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_3cc5386abcbc76d93bb71fdc2ad96cd9 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_f6dc497bbf5c6ff5af59dc11ded1e90a = $(`<div id="html_f6dc497bbf5c6ff5af59dc11ded1e90a" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/ad9fe9ff919b44ce853c5ed1ebfedf80' target='_blank'>모베이스</a></div>`)[0];
+                popup_3cc5386abcbc76d93bb71fdc2ad96cd9.setContent(html_f6dc497bbf5c6ff5af59dc11ded1e90a);
+            
+        
+
+        marker_e5e069660eeafe588056d4095e9b52ca.bindPopup(popup_3cc5386abcbc76d93bb71fdc2ad96cd9)
+        ;
+
+        
+    
+    
+            var marker_83325bd8990be5ee52d3e8d4f90595ef = L.marker(
+                [37.3047, 126.7779],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_0e543500a64c5126db0f043870adcf68 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_711555b7f93313d79048f0ad2c928764 = $(`<div id="html_711555b7f93313d79048f0ad2c928764" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/SJM-31bab66186214c6798bc694029a42010' target='_blank'>SJM</a></div>`)[0];
+                popup_0e543500a64c5126db0f043870adcf68.setContent(html_711555b7f93313d79048f0ad2c928764);
+            
+        
+
+        marker_83325bd8990be5ee52d3e8d4f90595ef.bindPopup(popup_0e543500a64c5126db0f043870adcf68)
+        ;
+
+        
+    
+    
+            var marker_013d8c1589d0080a14517f136a7e5120 = L.marker(
+                [35.20404, 128.6795],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_b26ab5a6d845fe2a56491823b413f006 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_bf14ce9d5ab1c65ceee7781a5ecd56f3 = $(`<div id="html_bf14ce9d5ab1c65ceee7781a5ecd56f3" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/373c08c82bbb4b8e8e6a787d7b9e8bdd' target='_blank'>지엠비코리아</a></div>`)[0];
+                popup_b26ab5a6d845fe2a56491823b413f006.setContent(html_bf14ce9d5ab1c65ceee7781a5ecd56f3);
+            
+        
+
+        marker_013d8c1589d0080a14517f136a7e5120.bindPopup(popup_b26ab5a6d845fe2a56491823b413f006)
+        ;
+
+        
+    
+    
+            var marker_84911c0a414dca2c67c5f02fb856868e = L.marker(
+                [35.84898, 128.5017],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_1888d0bdad130f293fa92a79e69ba3b3 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_0fc928b5063034b8e6362e6f9f930f1c = $(`<div id="html_0fc928b5063034b8e6362e6f9f930f1c" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/a74ece9372d64a439bd81a9323544259' target='_blank'>티에이치엔</a></div>`)[0];
+                popup_1888d0bdad130f293fa92a79e69ba3b3.setContent(html_0fc928b5063034b8e6362e6f9f930f1c);
+            
+        
+
+        marker_84911c0a414dca2c67c5f02fb856868e.bindPopup(popup_1888d0bdad130f293fa92a79e69ba3b3)
+        ;
+
+        
+    
+    
+            var marker_e68808b98551f2fb40b221a395edda57 = L.marker(
+                [35.0892, 128.9709],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_9690258f623657a8a73bf326c3c161e8 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_05f87889e61dd7ae122ace5eee5c9c6c = $(`<div id="html_05f87889e61dd7ae122ace5eee5c9c6c" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/bee8a76466144c2cb706146d6bcfb1b0' target='_blank'>유니테크노</a></div>`)[0];
+                popup_9690258f623657a8a73bf326c3c161e8.setContent(html_05f87889e61dd7ae122ace5eee5c9c6c);
+            
+        
+
+        marker_e68808b98551f2fb40b221a395edda57.bindPopup(popup_9690258f623657a8a73bf326c3c161e8)
+        ;
+
+        
+    
+    
+            var marker_ac9cec72f7307f590a4275c9e986e456 = L.marker(
+                [37.28002, 127.1194],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_c6d28f2c90ad439d67efeaac3617b914 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_903b990922a85226d902bb3c832825c7 = $(`<div id="html_903b990922a85226d902bb3c832825c7" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/d78a67dc38a54e41a6e599d5093fe766' target='_blank'>케이퓨얼셀</a></div>`)[0];
+                popup_c6d28f2c90ad439d67efeaac3617b914.setContent(html_903b990922a85226d902bb3c832825c7);
+            
+        
+
+        marker_ac9cec72f7307f590a4275c9e986e456.bindPopup(popup_c6d28f2c90ad439d67efeaac3617b914)
+        ;
+
+        
+    
+    
+            var marker_56be27b814ab15ee44d9898dccdf8acf = L.marker(
+                [35.28825, 128.7746],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_2185075c5ed3f540d1a1b619f456ced4 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_69c0b5683e09d8007dc2943e788de532 = $(`<div id="html_69c0b5683e09d8007dc2943e788de532" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/7736e953865d450d8e345ff35039d56f' target='_blank'>유니크</a></div>`)[0];
+                popup_2185075c5ed3f540d1a1b619f456ced4.setContent(html_69c0b5683e09d8007dc2943e788de532);
+            
+        
+
+        marker_56be27b814ab15ee44d9898dccdf8acf.bindPopup(popup_2185075c5ed3f540d1a1b619f456ced4)
+        ;
+
+        
+    
+    
+            var marker_d3d1df2730cb71e802c40f7ef366e630 = L.marker(
+                [37.2367, 126.9834],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_a94d9379f016d561003a945558bb054c = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_132b6b38491a740014d8b7490f82cfd6 = $(`<div id="html_132b6b38491a740014d8b7490f82cfd6" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/b4e2a21b980345ee86738bde8dcd36b0' target='_blank'>아이탑스오토모티브(주)</a></div>`)[0];
+                popup_a94d9379f016d561003a945558bb054c.setContent(html_132b6b38491a740014d8b7490f82cfd6);
+            
+        
+
+        marker_d3d1df2730cb71e802c40f7ef366e630.bindPopup(popup_a94d9379f016d561003a945558bb054c)
+        ;
+
+        
+    
+    
+            var marker_7254c70880edc7b13f60b24deebef97a = L.marker(
+                [35.67898, 128.4514],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_cff70ce7e36653cf7a3ceea89e6bd5f9 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_a6a67d07dbdc3e76d7088f5e6cc0fed9 = $(`<div id="html_a6a67d07dbdc3e76d7088f5e6cc0fed9" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/f537ee97c6234719991afe12ee6e6c96' target='_blank'>평화발레오</a></div>`)[0];
+                popup_cff70ce7e36653cf7a3ceea89e6bd5f9.setContent(html_a6a67d07dbdc3e76d7088f5e6cc0fed9);
+            
+        
+
+        marker_7254c70880edc7b13f60b24deebef97a.bindPopup(popup_cff70ce7e36653cf7a3ceea89e6bd5f9)
+        ;
+
+        
+    
+    
+            var marker_0bdd0697ed3a6b41f21f038d724cf153 = L.marker(
+                [37.39655, 126.964],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_99ef3d47ee611b4f1844cdb3ce9e0264 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_c1a35c515558e98171e7b54c22386433 = $(`<div id="html_c1a35c515558e98171e7b54c22386433" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/c5cb2c0c64e24812ae6ae07e76080495' target='_blank'>세솔테크</a></div>`)[0];
+                popup_99ef3d47ee611b4f1844cdb3ce9e0264.setContent(html_c1a35c515558e98171e7b54c22386433);
+            
+        
+
+        marker_0bdd0697ed3a6b41f21f038d724cf153.bindPopup(popup_99ef3d47ee611b4f1844cdb3ce9e0264)
+        ;
+
+        
+    
+    
+            var marker_7c495b13022c451a02f06571bb71fc4f = L.marker(
+                [37.56565, 126.9881],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_6ad8c429d2e6de5be95beaf88e47ce36 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_d09c3d6ab1c8bf9c1a6e36a6f843464b = $(`<div id="html_d09c3d6ab1c8bf9c1a6e36a6f843464b" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/af9624f8475d4570aca946a82e431b82' target='_blank'>한솔테크닉스(주)</a></div>`)[0];
+                popup_6ad8c429d2e6de5be95beaf88e47ce36.setContent(html_d09c3d6ab1c8bf9c1a6e36a6f843464b);
+            
+        
+
+        marker_7c495b13022c451a02f06571bb71fc4f.bindPopup(popup_6ad8c429d2e6de5be95beaf88e47ce36)
+        ;
+
+        
+    
+    
+            var marker_d168b644684e03d0cb348d581c692471 = L.marker(
+                [36.87788, 126.9271],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_006b17f25f43b223421802df1a9bc985 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_eddbd59f9ad0a2b2991d0b8391243355 = $(`<div id="html_eddbd59f9ad0a2b2991d0b8391243355" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/9fca3202033040d0a17d441bf1a9931a' target='_blank'>(주)두원전자</a></div>`)[0];
+                popup_006b17f25f43b223421802df1a9bc985.setContent(html_eddbd59f9ad0a2b2991d0b8391243355);
+            
+        
+
+        marker_d168b644684e03d0cb348d581c692471.bindPopup(popup_006b17f25f43b223421802df1a9bc985)
+        ;
+
+        
+    
+    
+            var marker_061a5d3c5c2c46ad9237df181f1e8abd = L.marker(
+                [37.55375, 126.6426],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_b7c01211225a120172d8ae033b63f80c = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_638b5e965526696dfff63bf7687e779b = $(`<div id="html_638b5e965526696dfff63bf7687e779b" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/403fae40bca845288498dfe0ba72f521' target='_blank'>엘지마그나이파워트레인</a></div>`)[0];
+                popup_b7c01211225a120172d8ae033b63f80c.setContent(html_638b5e965526696dfff63bf7687e779b);
+            
+        
+
+        marker_061a5d3c5c2c46ad9237df181f1e8abd.bindPopup(popup_b7c01211225a120172d8ae033b63f80c)
+        ;
+
+        
+    
+    
+            var marker_bf2a794d2979b77407d6f45c82171e64 = L.marker(
+                [37.48023, 126.881],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_ce40353085f07822349e1c8e720e1062 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_278dd675de0755165715319a61b0d1a8 = $(`<div id="html_278dd675de0755165715319a61b0d1a8" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/d2edf011a0a54ac788067e6259007e8b' target='_blank'>아이모스시스템㈜</a></div>`)[0];
+                popup_ce40353085f07822349e1c8e720e1062.setContent(html_278dd675de0755165715319a61b0d1a8);
+            
+        
+
+        marker_bf2a794d2979b77407d6f45c82171e64.bindPopup(popup_ce40353085f07822349e1c8e720e1062)
+        ;
+
+        
+    
+    
+            var marker_dca5eb5829e9c0f4ecd01eef51fe0f3a = L.marker(
+                [36.91562, 127.0588],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_76d20f03f72fb432041fd703e2bef4d7 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_88ba73c25e0553fd3d7b7f5fe0c924ee = $(`<div id="html_88ba73c25e0553fd3d7b7f5fe0c924ee" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/ea892ef517df4b22b8c17dbcd762e588' target='_blank'>(주)니프코 코리아</a></div>`)[0];
+                popup_76d20f03f72fb432041fd703e2bef4d7.setContent(html_88ba73c25e0553fd3d7b7f5fe0c924ee);
+            
+        
+
+        marker_dca5eb5829e9c0f4ecd01eef51fe0f3a.bindPopup(popup_76d20f03f72fb432041fd703e2bef4d7)
+        ;
+
+        
+    
+    
+            var marker_7ca12dc3cc715113368519c0eba7b4a1 = L.marker(
+                [37.20534, 127.1031],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_ffe844f9fa0f25f3da1429b522959dce = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_fd6b51815004195c06dedb7bc795f0f9 = $(`<div id="html_fd6b51815004195c06dedb7bc795f0f9" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/3de6b3badff542ada0e936a6160d9788' target='_blank'>동아전기부품(주)</a></div>`)[0];
+                popup_ffe844f9fa0f25f3da1429b522959dce.setContent(html_fd6b51815004195c06dedb7bc795f0f9);
+            
+        
+
+        marker_7ca12dc3cc715113368519c0eba7b4a1.bindPopup(popup_ffe844f9fa0f25f3da1429b522959dce)
+        ;
+
+        
+    
+    
+            var marker_9e060f19e5d6769a552290bdb829f017 = L.marker(
+                [37.28044, 127.1177],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_0e57276f5e38725570c11d5465dd8507 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_cf3999e743ba0cf7c4c5c57727582fb9 = $(`<div id="html_cf3999e743ba0cf7c4c5c57727582fb9" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/178255580b7c46dd932f73a8166721c9' target='_blank'>지티시스템(주)</a></div>`)[0];
+                popup_0e57276f5e38725570c11d5465dd8507.setContent(html_cf3999e743ba0cf7c4c5c57727582fb9);
+            
+        
+
+        marker_9e060f19e5d6769a552290bdb829f017.bindPopup(popup_0e57276f5e38725570c11d5465dd8507)
+        ;
+
+        
+    
+    
+            var marker_1f3f27969dda5e7845047acc29277e2e = L.marker(
+                [36.73764, 127.2681],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_e2e465eecb298d1487ce14d32af3cb10 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_feeb621d1b76a4aa61bde515077df3a3 = $(`<div id="html_feeb621d1b76a4aa61bde515077df3a3" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/a119e21a451049a69d53a7f5ea44d2e4' target='_blank'>피에이치에이에차(유)</a></div>`)[0];
+                popup_e2e465eecb298d1487ce14d32af3cb10.setContent(html_feeb621d1b76a4aa61bde515077df3a3);
+            
+        
+
+        marker_1f3f27969dda5e7845047acc29277e2e.bindPopup(popup_e2e465eecb298d1487ce14d32af3cb10)
+        ;
+
+        
+    
+    
+            var marker_8550c6496c5176aae7c0dfb2682168c3 = L.marker(
+                [36.86694, 127.0317],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_55e3716c19c071b7cefd261e05b6ce0d = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_f673a83cd6c32fc415c93097555d53ed = $(`<div id="html_f673a83cd6c32fc415c93097555d53ed" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/61713b1438824a98a24ee76ff1454ecf' target='_blank'>두원공조</a></div>`)[0];
+                popup_55e3716c19c071b7cefd261e05b6ce0d.setContent(html_f673a83cd6c32fc415c93097555d53ed);
+            
+        
+
+        marker_8550c6496c5176aae7c0dfb2682168c3.bindPopup(popup_55e3716c19c071b7cefd261e05b6ce0d)
+        ;
+
+        
+    
+    
+            var marker_a2ede5f32157b891d40819b559df54db = L.marker(
+                [37.37913, 126.6388],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_257987f6629dc1cadca99c9e8535f561 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_2a13825f5aad1e14d994cdfb3d621831 = $(`<div id="html_2a13825f5aad1e14d994cdfb3d621831" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/715212f6c64141f0bba232800d66bec7' target='_blank'>에이치엘클레무브</a></div>`)[0];
+                popup_257987f6629dc1cadca99c9e8535f561.setContent(html_2a13825f5aad1e14d994cdfb3d621831);
+            
+        
+
+        marker_a2ede5f32157b891d40819b559df54db.bindPopup(popup_257987f6629dc1cadca99c9e8535f561)
+        ;
+
+        
+    
+    
+            var marker_823ebfb4740be2c7e8735ff5ec08bbcc = L.marker(
+                [35.86786, 128.8226],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_f5a9ef100675734d0d4218a02649c80f = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_a9fe18faedd6dff3d3befa7cfca1428d = $(`<div id="html_a9fe18faedd6dff3d3befa7cfca1428d" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/eb3fdedd6ade4a9c9ac9de5c963b1a78' target='_blank'>에스엘</a></div>`)[0];
+                popup_f5a9ef100675734d0d4218a02649c80f.setContent(html_a9fe18faedd6dff3d3befa7cfca1428d);
+            
+        
+
+        marker_823ebfb4740be2c7e8735ff5ec08bbcc.bindPopup(popup_f5a9ef100675734d0d4218a02649c80f)
+        ;
+
+        
+    
+    
+            var marker_221e78d8554b2f7ec332f0ce03258fdc = L.marker(
+                [35.32306, 129.1926],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_cf80fc4d2317fb5935d1f5e9e0d1cf89 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_3ca2de48e0479cb41910ca469b3ae6b6 = $(`<div id="html_3ca2de48e0479cb41910ca469b3ae6b6" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/1a0a9f41f8e04bfab1fb7a065c60d8b6' target='_blank'>성우하이텍</a></div>`)[0];
+                popup_cf80fc4d2317fb5935d1f5e9e0d1cf89.setContent(html_3ca2de48e0479cb41910ca469b3ae6b6);
+            
+        
+
+        marker_221e78d8554b2f7ec332f0ce03258fdc.bindPopup(popup_cf80fc4d2317fb5935d1f5e9e0d1cf89)
+        ;
+
+        
+    
+    
+            var marker_8848b66aa5b7886bf07fafcd2263e03c = L.marker(
+                [35.94582, 127.1295],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_67d50bd86e7496a933e12432eb49674f = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_a02cc0a489d56051b12adec49c98a0df = $(`<div id="html_a02cc0a489d56051b12adec49c98a0df" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/b26014acf64a45e5ac96f98cb9acea5f' target='_blank'>일진하이솔루스</a></div>`)[0];
+                popup_67d50bd86e7496a933e12432eb49674f.setContent(html_a02cc0a489d56051b12adec49c98a0df);
+            
+        
+
+        marker_8848b66aa5b7886bf07fafcd2263e03c.bindPopup(popup_67d50bd86e7496a933e12432eb49674f)
+        ;
+
+        
+    
+    
+            var marker_e6966e1247f9c195fa9cf7f451a69ab9 = L.marker(
+                [35.70572, 129.2071],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_a112eeb9ed3509586f2b9c7b8d4821c5 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_7d4bd7d1c15f9dd4955be622abeddfd4 = $(`<div id="html_7d4bd7d1c15f9dd4955be622abeddfd4" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/58e4bd2254904f81a2ab473206e8c2cc' target='_blank'>디아이씨</a></div>`)[0];
+                popup_a112eeb9ed3509586f2b9c7b8d4821c5.setContent(html_7d4bd7d1c15f9dd4955be622abeddfd4);
+            
+        
+
+        marker_e6966e1247f9c195fa9cf7f451a69ab9.bindPopup(popup_a112eeb9ed3509586f2b9c7b8d4821c5)
+        ;
+
+        
+    
+    
+            var marker_74ed6ba1297d175c26cdf9c03dab200f = L.marker(
+                [37.38528, 126.6555],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_711e6ab3bfdbcadf44da99578282e186 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_e4738b0b7026a50373db55cdcdf86d0b = $(`<div id="html_e4738b0b7026a50373db55cdcdf86d0b" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/b50a1d0b91e64eca98c0ea4a3394c7fd' target='_blank'>한국단자공업</a></div>`)[0];
+                popup_711e6ab3bfdbcadf44da99578282e186.setContent(html_e4738b0b7026a50373db55cdcdf86d0b);
+            
+        
+
+        marker_74ed6ba1297d175c26cdf9c03dab200f.bindPopup(popup_711e6ab3bfdbcadf44da99578282e186)
+        ;
+
+        
+    
+    
+            var marker_105401a81a70747de550482ae4dbc03a = L.marker(
+                [35.36963, 129.0659],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_3e15fb8a738e57534bf78fcbb35d3c3d = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_83d483ed00c3e31a9879b5b60b7ef211 = $(`<div id="html_83d483ed00c3e31a9879b5b60b7ef211" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/DN-889a68bd007d4e3fae43ef66c91016cb' target='_blank'>DN오토모티브</a></div>`)[0];
+                popup_3e15fb8a738e57534bf78fcbb35d3c3d.setContent(html_83d483ed00c3e31a9879b5b60b7ef211);
+            
+        
+
+        marker_105401a81a70747de550482ae4dbc03a.bindPopup(popup_3e15fb8a738e57534bf78fcbb35d3c3d)
+        ;
+
+        
+    
+    
+            var marker_f0bd991f9f5ce73f328badc2d5d22ee3 = L.marker(
+                [36.89743, 127.2008],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_d86ca08e90496de8b408e8aa59e9407a = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_4667e6b5d0cc830ed9e333fd294cf570 = $(`<div id="html_4667e6b5d0cc830ed9e333fd294cf570" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/2635e7e8db094904be4c210e2d448603' target='_blank'>대원강업</a></div>`)[0];
+                popup_d86ca08e90496de8b408e8aa59e9407a.setContent(html_4667e6b5d0cc830ed9e333fd294cf570);
+            
+        
+
+        marker_f0bd991f9f5ce73f328badc2d5d22ee3.bindPopup(popup_d86ca08e90496de8b408e8aa59e9407a)
+        ;
+
+        
+    
+    
+            var marker_67e637a941fbd66f15d152d24770cb5f = L.marker(
+                [36.75636, 127.2928],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_88980acfb0658d98c39f8aa42fb56900 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_e59af9cee7fb8a5593a06ac45ec693b1 = $(`<div id="html_e59af9cee7fb8a5593a06ac45ec693b1" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/c0caf1e0bafe4dbca29d84251916f6e9' target='_blank'>(주)오스템</a></div>`)[0];
+                popup_88980acfb0658d98c39f8aa42fb56900.setContent(html_e59af9cee7fb8a5593a06ac45ec693b1);
+            
+        
+
+        marker_67e637a941fbd66f15d152d24770cb5f.bindPopup(popup_88980acfb0658d98c39f8aa42fb56900)
+        ;
+
+        
+    
+    
+            var marker_afabe52a6f2b97ea0c30534375b16a5d = L.marker(
+                [35.83366, 128.5168],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_560fa51b5c3826536e2ed7e3372f1979 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_449b4864d34d305169f81ad43305093a = $(`<div id="html_449b4864d34d305169f81ad43305093a" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/daae1c34d6d94bcd9dbc603b0ec6010f' target='_blank'>삼보모터스</a></div>`)[0];
+                popup_560fa51b5c3826536e2ed7e3372f1979.setContent(html_449b4864d34d305169f81ad43305093a);
+            
+        
+
+        marker_afabe52a6f2b97ea0c30534375b16a5d.bindPopup(popup_560fa51b5c3826536e2ed7e3372f1979)
+        ;
+
+        
+    
+    
+            var marker_8c1df918e3e4b19a8927cd47ae996006 = L.marker(
+                [35.20741, 128.639],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_c60cf77037fbabe9f7210b610fcb6f40 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_06a0c2e894810ab3e21faaf90faa4afe = $(`<div id="html_06a0c2e894810ab3e21faaf90faa4afe" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/AMS-e1f8e3cefb314b90b42422b06639b252' target='_blank'>우수AMS</a></div>`)[0];
+                popup_c60cf77037fbabe9f7210b610fcb6f40.setContent(html_06a0c2e894810ab3e21faaf90faa4afe);
+            
+        
+
+        marker_8c1df918e3e4b19a8927cd47ae996006.bindPopup(popup_c60cf77037fbabe9f7210b610fcb6f40)
+        ;
+
+        
+    
+    
+            var marker_cf2f76f19e1bdf45725b15ef68139b3f = L.marker(
+                [35.7382, 128.4602],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_32ce46485735dec2165bafa2fef03b81 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_39edafc3a53eeeeb1b711d622df71bf3 = $(`<div id="html_39edafc3a53eeeeb1b711d622df71bf3" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/de29cc9f37704ede9f535ad9b5bdccc7' target='_blank'>평화산업</a></div>`)[0];
+                popup_32ce46485735dec2165bafa2fef03b81.setContent(html_39edafc3a53eeeeb1b711d622df71bf3);
+            
+        
+
+        marker_cf2f76f19e1bdf45725b15ef68139b3f.bindPopup(popup_32ce46485735dec2165bafa2fef03b81)
+        ;
+
+        
+    
+    
+            var marker_77e625b137ef3072847e2ff91c94cf97 = L.marker(
+                [35.56918, 129.3704],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_daa42dc83ad612a5a47cedd37308b7e2 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_a146346410a4ae7c8c682cb43b0fcffc = $(`<div id="html_a146346410a4ae7c8c682cb43b0fcffc" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/5ad599131a77421ca7e56965bd40a777' target='_blank'>에스제이지세종</a></div>`)[0];
+                popup_daa42dc83ad612a5a47cedd37308b7e2.setContent(html_a146346410a4ae7c8c682cb43b0fcffc);
+            
+        
+
+        marker_77e625b137ef3072847e2ff91c94cf97.bindPopup(popup_daa42dc83ad612a5a47cedd37308b7e2)
+        ;
+
+        
+    
+    
+            var marker_af57a0e85578463cb8e43ceaca43fde4 = L.marker(
+                [35.61175, 126.8435],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_10221a1692b2c9920f359c982ee338a8 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_98b93cf1b862990bdca39cdf640724c5 = $(`<div id="html_98b93cf1b862990bdca39cdf640724c5" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/2af4a00838d449dbac9edb8c430b7dc3' target='_blank'>대우부품(대우전자부품(주))</a></div>`)[0];
+                popup_10221a1692b2c9920f359c982ee338a8.setContent(html_98b93cf1b862990bdca39cdf640724c5);
+            
+        
+
+        marker_af57a0e85578463cb8e43ceaca43fde4.bindPopup(popup_10221a1692b2c9920f359c982ee338a8)
+        ;
+
+        
+    
+    
+            var marker_d3a1553a737654a5b74f99a7e3d26d8e = L.marker(
+                [35.21745, 128.6672],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_5ae460d621aa129f81204fd26d022327 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_f777fbae69b758470208ec33e35267c6 = $(`<div id="html_f777fbae69b758470208ec33e35267c6" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/4b84a44936444817b5e32519b0bbc0ce' target='_blank'>삼성공조</a></div>`)[0];
+                popup_5ae460d621aa129f81204fd26d022327.setContent(html_f777fbae69b758470208ec33e35267c6);
+            
+        
+
+        marker_d3a1553a737654a5b74f99a7e3d26d8e.bindPopup(popup_5ae460d621aa129f81204fd26d022327)
+        ;
+
+        
+    
+    
+            var marker_2d22e264bd8288a4354b822187bc42fd = L.marker(
+                [37.04254, 127.1195],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_b42d4a74d54530b86f47bd27da03ccc5 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_1ac2868e2148034e195e91a455465bde = $(`<div id="html_1ac2868e2148034e195e91a455465bde" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/7be716c45add4a36bf6c26b889a8bf47' target='_blank'>성창오토텍</a></div>`)[0];
+                popup_b42d4a74d54530b86f47bd27da03ccc5.setContent(html_1ac2868e2148034e195e91a455465bde);
+            
+        
+
+        marker_2d22e264bd8288a4354b822187bc42fd.bindPopup(popup_b42d4a74d54530b86f47bd27da03ccc5)
+        ;
+
+        
+    
+    
+            var marker_45041c21e9e1890bda9b8668babe8f37 = L.marker(
+                [36.76727, 127.2783],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_24198189df2ea7dae90f7feddfbdc522 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_b635ebf61cc4094a4663fe8e0eeb4181 = $(`<div id="html_b635ebf61cc4094a4663fe8e0eeb4181" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/5439a753ec4c4acdbd45e267891f9f7c' target='_blank'>새론오토모티브</a></div>`)[0];
+                popup_24198189df2ea7dae90f7feddfbdc522.setContent(html_b635ebf61cc4094a4663fe8e0eeb4181);
+            
+        
+
+        marker_45041c21e9e1890bda9b8668babe8f37.bindPopup(popup_24198189df2ea7dae90f7feddfbdc522)
+        ;
+
+        
+    
+    
+            var marker_c33fc557a2a75edbd77a8de1a6f0b27d = L.marker(
+                [36.80068, 127.087],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_3f9c99e87c099530f4eae535e0fdc4cd = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_13e7b5c5e9ded195548945786bb2bf0d = $(`<div id="html_13e7b5c5e9ded195548945786bb2bf0d" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/350f8b3c2f0249169821d25f70df6f8b' target='_blank'>케이비오토텍</a></div>`)[0];
+                popup_3f9c99e87c099530f4eae535e0fdc4cd.setContent(html_13e7b5c5e9ded195548945786bb2bf0d);
+            
+        
+
+        marker_c33fc557a2a75edbd77a8de1a6f0b27d.bindPopup(popup_3f9c99e87c099530f4eae535e0fdc4cd)
+        ;
+
+        
+    
+    
+            var marker_3fd456aa3180083d4daf977e83f48bf9 = L.marker(
+                [36.36254, 127.3582],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_107c9978ad44038bf0aad83d2f44efab = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_7c971adcec9805961ff7abf1be7b96d1 = $(`<div id="html_7c971adcec9805961ff7abf1be7b96d1" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/4a67c576d98e4b619478b484244ac4ea' target='_blank'>에이유</a></div>`)[0];
+                popup_107c9978ad44038bf0aad83d2f44efab.setContent(html_7c971adcec9805961ff7abf1be7b96d1);
+            
+        
+
+        marker_3fd456aa3180083d4daf977e83f48bf9.bindPopup(popup_107c9978ad44038bf0aad83d2f44efab)
+        ;
+
+        
+    
+    
+            var marker_6f02729d735c74b1aa49d0e46270865c = L.marker(
+                [35.20858, 128.6729],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_586de11fbfee7975b84326965eddbb5d = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_ab6bc5d57a9d0742a2ba7ffa86901bb2 = $(`<div id="html_ab6bc5d57a9d0742a2ba7ffa86901bb2" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/922ffb7b7315495a88f1cdf6881dda25' target='_blank'>하이젠알앤엠(주)</a></div>`)[0];
+                popup_586de11fbfee7975b84326965eddbb5d.setContent(html_ab6bc5d57a9d0742a2ba7ffa86901bb2);
+            
+        
+
+        marker_6f02729d735c74b1aa49d0e46270865c.bindPopup(popup_586de11fbfee7975b84326965eddbb5d)
+        ;
+
+        
+    
+    
+            var marker_b86cddabeac80011a6baece583fcb95a = L.marker(
+                [35.8546, 128.8072],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_cbc480fa9152d6d4d7e669d351c082ec = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_7e80e2518de1d60fd7e552d2eab4d579 = $(`<div id="html_7e80e2518de1d60fd7e552d2eab4d579" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/254d2cdd2c2f46748b1dc06b628365de' target='_blank'>체시스</a></div>`)[0];
+                popup_cbc480fa9152d6d4d7e669d351c082ec.setContent(html_7e80e2518de1d60fd7e552d2eab4d579);
+            
+        
+
+        marker_b86cddabeac80011a6baece583fcb95a.bindPopup(popup_cbc480fa9152d6d4d7e669d351c082ec)
+        ;
+
+        
+    
+    
+            var marker_eadc5414424b101e3371c24fd722e0f4 = L.marker(
+                [35.20737, 128.6784],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_3bb6102168f11a888da2b32ef7e0cd6b = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_f61db2441184075d74a8c3c8e1013f2f = $(`<div id="html_f61db2441184075d74a8c3c8e1013f2f" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/5fe8360632f34918a0579140749444e4' target='_blank'>대성파인텍</a></div>`)[0];
+                popup_3bb6102168f11a888da2b32ef7e0cd6b.setContent(html_f61db2441184075d74a8c3c8e1013f2f);
+            
+        
+
+        marker_eadc5414424b101e3371c24fd722e0f4.bindPopup(popup_3bb6102168f11a888da2b32ef7e0cd6b)
+        ;
+
+        
+    
+    
+            var marker_8898df5388795e49dae30773d880f31a = L.marker(
+                [37.3935078942772, 126.959414289663],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_703345c969ce36f43741f06fd4e15d71 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_112a4cc6b4194b4267e0699c5d3f2ff2 = $(`<div id="html_112a4cc6b4194b4267e0699c5d3f2ff2" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/62a6b6de43a34f1e9847b95b4fbc2a44' target='_blank'>엘에스오토모티브테크놀로지스</a></div>`)[0];
+                popup_703345c969ce36f43741f06fd4e15d71.setContent(html_112a4cc6b4194b4267e0699c5d3f2ff2);
+            
+        
+
+        marker_8898df5388795e49dae30773d880f31a.bindPopup(popup_703345c969ce36f43741f06fd4e15d71)
+        ;
+
+        
+    
+    
+            var marker_3faa5cba48f96a7f12827261235a3a1b = L.marker(
+                [37.4061232192454, 127.085353833074],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_002c98df95b73d87a9f079856da5f088 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_f76a9b7cd648d7e646b9edb37ffd27d8 = $(`<div id="html_f76a9b7cd648d7e646b9edb37ffd27d8" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/cba3c5ddc7714a23b6ce7fed90c9b298' target='_blank'>에프에스솔루션</a></div>`)[0];
+                popup_002c98df95b73d87a9f079856da5f088.setContent(html_f76a9b7cd648d7e646b9edb37ffd27d8);
+            
+        
+
+        marker_3faa5cba48f96a7f12827261235a3a1b.bindPopup(popup_002c98df95b73d87a9f079856da5f088)
+        ;
+
+        
+    
+    
+            var marker_94ce42ef1dd32898a3935a70122efb6d = L.marker(
+                [37.5300697454376, 126.926245598736],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_d8dc34a2a4603e6688d75e21db68bbae = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_6e79e9b59ea9e87c6e89ca70848eda6d = $(`<div id="html_6e79e9b59ea9e87c6e89ca70848eda6d" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/8183902c5bd641afa27b427748411751' target='_blank'>아우토크립트</a></div>`)[0];
+                popup_d8dc34a2a4603e6688d75e21db68bbae.setContent(html_6e79e9b59ea9e87c6e89ca70848eda6d);
+            
+        
+
+        marker_94ce42ef1dd32898a3935a70122efb6d.bindPopup(popup_d8dc34a2a4603e6688d75e21db68bbae)
+        ;
+
+        
+    
+    
+            var marker_abf3b0984040010b3d0e0e774a3e617a = L.marker(
+                [37.5279271045092, 126.929241174348],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_c165e952767aa40ae1b69ea595d9949e = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_b4bf9838f62bd9055d89edcfa586b85e = $(`<div id="html_b4bf9838f62bd9055d89edcfa586b85e" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/LG-6d14c83ec36c44bab83b15d73a99983e' target='_blank'>LG화학</a></div>`)[0];
+                popup_c165e952767aa40ae1b69ea595d9949e.setContent(html_b4bf9838f62bd9055d89edcfa586b85e);
+            
+        
+
+        marker_abf3b0984040010b3d0e0e774a3e617a.bindPopup(popup_c165e952767aa40ae1b69ea595d9949e)
+        ;
+
+        
+    
+    
+            var marker_4ca67bc197db73a0011efac95c10ca56 = L.marker(
+                [37.3745343892134, 126.641791524203],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_883a91048e7e3429b739d8a7b33a2b9a = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_cdfd22eab697f4c99c206caef6eea797 = $(`<div id="html_cdfd22eab697f4c99c206caef6eea797" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/a0fa8cae8472431d86c837ad638892f5' target='_blank'>대양전기공업</a></div>`)[0];
+                popup_883a91048e7e3429b739d8a7b33a2b9a.setContent(html_cdfd22eab697f4c99c206caef6eea797);
+            
+        
+
+        marker_4ca67bc197db73a0011efac95c10ca56.bindPopup(popup_883a91048e7e3429b739d8a7b33a2b9a)
+        ;
+
+        
+    
+    
+            var marker_6b992b9ab533918801bb4dcc268028ee = L.marker(
+                [37.5073809450356, 127.056821251348],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_04c8bc5b11143c74c9a971f4f435304f = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_56fc3f34aa8c94112b8c65046c84e945 = $(`<div id="html_56fc3f34aa8c94112b8c65046c84e945" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/b861d4a73104469597785dc39c334549' target='_blank'>모라이</a></div>`)[0];
+                popup_04c8bc5b11143c74c9a971f4f435304f.setContent(html_56fc3f34aa8c94112b8c65046c84e945);
+            
+        
+
+        marker_6b992b9ab533918801bb4dcc268028ee.bindPopup(popup_04c8bc5b11143c74c9a971f4f435304f)
+        ;
+
+        
+    
+    
+            var marker_46b3041524e6db6949a0b0a8cbc60907 = L.marker(
+                [35.5700554069753, 129.370400755657],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_37444f1c8288d06d774c0a96abfa827b = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_804247c11ff4678fefa5b16d2c7d0fb3 = $(`<div id="html_804247c11ff4678fefa5b16d2c7d0fb3" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/0001c8120d254343ab4c86cc45be6b4f' target='_blank'>에스제이지 중앙연구소</a></div>`)[0];
+                popup_37444f1c8288d06d774c0a96abfa827b.setContent(html_804247c11ff4678fefa5b16d2c7d0fb3);
+            
+        
+
+        marker_46b3041524e6db6949a0b0a8cbc60907.bindPopup(popup_37444f1c8288d06d774c0a96abfa827b)
+        ;
+
+        
+    
+    
+            var marker_f040ebcd4eb49e19af22c7c90536e1ab = L.marker(
+                [35.2452147548722, 128.620217271342],
+                {}
+            ).addTo(marker_cluster_a4121cc8387a2ce5cba21e320d95e01e);
+        
+    
+        var popup_16204980931f87b3971ebec35e622e4c = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_be678ea2fc5f39b77a007f5b824b624f = $(`<div id="html_be678ea2fc5f39b77a007f5b824b624f" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/736dcadc8e794766aabe2a2006d5b583' target='_blank'>(주)삼현</a></div>`)[0];
+                popup_16204980931f87b3971ebec35e622e4c.setContent(html_be678ea2fc5f39b77a007f5b824b624f);
+            
+        
+
+        marker_f040ebcd4eb49e19af22c7c90536e1ab.bindPopup(popup_16204980931f87b3971ebec35e622e4c)
+        ;
+
+        
+    
+    
+            marker_cluster_a4121cc8387a2ce5cba21e320d95e01e.addTo(map_358d7f992864203232927bb47de14da2);
+        
+    
+            var marker_a6ef6b2632033f2229b32f3be5be4e66 = L.marker(
+                [37.40043, 127.1102],
+                {}
+            ).addTo(map_358d7f992864203232927bb47de14da2);
+        
+    
+            var icon_d11f791569e6d37d2b1803919ae9d9c8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_a6ef6b2632033f2229b32f3be5be4e66.setIcon(icon_d11f791569e6d37d2b1803919ae9d9c8);
+        
+    
+        var popup_0e71ad15d7bb92f6ada4da6ab6a3d409 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_c0fa3b69a22c024f4c639cc620f416b0 = $(`<div id="html_c0fa3b69a22c024f4c639cc620f416b0" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/30342795801348e2a773a12e174537ae' target='_blank'>콘티넨탈오토모티브코리아</a></div>`)[0];
+                popup_0e71ad15d7bb92f6ada4da6ab6a3d409.setContent(html_c0fa3b69a22c024f4c639cc620f416b0);
+            
+        
+
+        marker_a6ef6b2632033f2229b32f3be5be4e66.bindPopup(popup_0e71ad15d7bb92f6ada4da6ab6a3d409)
+        ;
+
+        
+    
+    
+            var marker_dca8598cd354b09227d905d49e113b37 = L.marker(
+                [37.37942, 127.117],
+                {}
+            ).addTo(map_358d7f992864203232927bb47de14da2);
+        
+    
+            var icon_82e1f45bb7290051d8f332513f5eac67 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_dca8598cd354b09227d905d49e113b37.setIcon(icon_82e1f45bb7290051d8f332513f5eac67);
+        
+    
+        var popup_0d5ebb5b4ddef8ab4f50df941a51cf19 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_b8283299688d7e818782f518552e29ca = $(`<div id="html_b8283299688d7e818782f518552e29ca" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/ec5cece2be924730a0dde4ac4ddbfdd8' target='_blank'>모트렉스</a></div>`)[0];
+                popup_0d5ebb5b4ddef8ab4f50df941a51cf19.setContent(html_b8283299688d7e818782f518552e29ca);
+            
+        
+
+        marker_dca8598cd354b09227d905d49e113b37.bindPopup(popup_0d5ebb5b4ddef8ab4f50df941a51cf19)
+        ;
+
+        
+    
+    
+            var marker_d132d23ebc35470da753011eb745955e = L.marker(
+                [37.40671, 127.0873],
+                {}
+            ).addTo(map_358d7f992864203232927bb47de14da2);
+        
+    
+            var icon_79111648d328b9181dbfe15e472207de = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_d132d23ebc35470da753011eb745955e.setIcon(icon_79111648d328b9181dbfe15e472207de);
+        
+    
+        var popup_547598e4cab08fc63fd8c35c02ad398b = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_5eb1115810013b72e6c6d34e7e934b1b = $(`<div id="html_5eb1115810013b72e6c6d34e7e934b1b" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/c09f18b105964e64bfa6eea4448d46c0' target='_blank'>(주)텔레칩스</a></div>`)[0];
+                popup_547598e4cab08fc63fd8c35c02ad398b.setContent(html_5eb1115810013b72e6c6d34e7e934b1b);
+            
+        
+
+        marker_d132d23ebc35470da753011eb745955e.bindPopup(popup_547598e4cab08fc63fd8c35c02ad398b)
+        ;
+
+        
+    
+    
+            var marker_5722794880a2b40c443945b2c2ea5ef8 = L.marker(
+                [37.507, 127.0587],
+                {}
+            ).addTo(map_358d7f992864203232927bb47de14da2);
+        
+    
+            var icon_7c649cfc8d9c30a6a0b850f929388f5c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_5722794880a2b40c443945b2c2ea5ef8.setIcon(icon_7c649cfc8d9c30a6a0b850f929388f5c);
+        
+    
+        var popup_86b5329475cf6fd46f8a5b3711213dd2 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_f1164cb65a8643e54d20f6857858fbad = $(`<div id="html_f1164cb65a8643e54d20f6857858fbad" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/2ab60b737d214f13aebc28ff1857e334' target='_blank'>현대오토에버(주)</a></div>`)[0];
+                popup_86b5329475cf6fd46f8a5b3711213dd2.setContent(html_f1164cb65a8643e54d20f6857858fbad);
+            
+        
+
+        marker_5722794880a2b40c443945b2c2ea5ef8.bindPopup(popup_86b5329475cf6fd46f8a5b3711213dd2)
+        ;
+
+        
+    
+    
+            var marker_a04704009aee6da37aeb163cac9878fc = L.marker(
+                [37.46436, 127.0427],
+                {}
+            ).addTo(map_358d7f992864203232927bb47de14da2);
+        
+    
+            var icon_370eec54c60b3582a604566ab1c768e3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_a04704009aee6da37aeb163cac9878fc.setIcon(icon_370eec54c60b3582a604566ab1c768e3);
+        
+    
+        var popup_f57b8afb1a402ce3517c66ef1c3178eb = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_301f5270672dcb83c9b94b1c27982aeb = $(`<div id="html_301f5270672dcb83c9b94b1c27982aeb" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/2bd689c96f9643fcb802b20d7a74df3a' target='_blank'>현대자동차(주)</a></div>`)[0];
+                popup_f57b8afb1a402ce3517c66ef1c3178eb.setContent(html_301f5270672dcb83c9b94b1c27982aeb);
+            
+        
+
+        marker_a04704009aee6da37aeb163cac9878fc.bindPopup(popup_f57b8afb1a402ce3517c66ef1c3178eb)
+        ;
+
+        
+    
+    
+            var marker_08e696564a3bd7710ba161cc80fe147d = L.marker(
+                [37.52611, 126.9187],
+                {}
+            ).addTo(map_358d7f992864203232927bb47de14da2);
+        
+    
+            var icon_41969c9051f9e88e92d72905593b37fc = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_08e696564a3bd7710ba161cc80fe147d.setIcon(icon_41969c9051f9e88e92d72905593b37fc);
+        
+    
+        var popup_355a440f6ed8ceabd11cd10e6e1cc2d2 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_06c5fc4da237d81e0e9da68b38aa1554 = $(`<div id="html_06c5fc4da237d81e0e9da68b38aa1554" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/d36e1814b50c49188bb109ecb6a18bb0' target='_blank'>로스웰</a></div>`)[0];
+                popup_355a440f6ed8ceabd11cd10e6e1cc2d2.setContent(html_06c5fc4da237d81e0e9da68b38aa1554);
+            
+        
+
+        marker_08e696564a3bd7710ba161cc80fe147d.bindPopup(popup_355a440f6ed8ceabd11cd10e6e1cc2d2)
+        ;
+
+        
+    
+    
+            var marker_5eb9a2e45912e49d4d654bffb08e38ff = L.marker(
+                [37.40017, 127.1123],
+                {}
+            ).addTo(map_358d7f992864203232927bb47de14da2);
+        
+    
+            var icon_4f3a0e03471e1dc3af0805eb18b11e2b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_5eb9a2e45912e49d4d654bffb08e38ff.setIcon(icon_4f3a0e03471e1dc3af0805eb18b11e2b);
+        
+    
+        var popup_edabe2c03324645b418cb67591937ca9 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_19d0303c275ad1548a15dc18858990bd = $(`<div id="html_19d0303c275ad1548a15dc18858990bd" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/d498d519cf3e4a41abd053624b21b652' target='_blank'>(주)켐트로닉스</a></div>`)[0];
+                popup_edabe2c03324645b418cb67591937ca9.setContent(html_19d0303c275ad1548a15dc18858990bd);
+            
+        
+
+        marker_5eb9a2e45912e49d4d654bffb08e38ff.bindPopup(popup_edabe2c03324645b418cb67591937ca9)
+        ;
+
+        
+    
+    
+            var marker_09578bee20e0bfdf9772d9b000d06c4e = L.marker(
+                [37.40523, 127.1011],
+                {}
+            ).addTo(map_358d7f992864203232927bb47de14da2);
+        
+    
+            var icon_b4db39e29a6bdef0f110eb5e6d3032f9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_09578bee20e0bfdf9772d9b000d06c4e.setIcon(icon_b4db39e29a6bdef0f110eb5e6d3032f9);
+        
+    
+        var popup_a13ba108e2b1667cc94a4e3ffab7600a = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_f5dac9208b1094be710753f2412a5cfe = $(`<div id="html_f5dac9208b1094be710753f2412a5cfe" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/10cf759a3e3f429a9afdbc7b3058a3cd' target='_blank'>보스반도체</a></div>`)[0];
+                popup_a13ba108e2b1667cc94a4e3ffab7600a.setContent(html_f5dac9208b1094be710753f2412a5cfe);
+            
+        
+
+        marker_09578bee20e0bfdf9772d9b000d06c4e.bindPopup(popup_a13ba108e2b1667cc94a4e3ffab7600a)
+        ;
+
+        
+    
+    
+            var marker_3410df41c93465f8392fe632625e6b55 = L.marker(
+                [37.30034, 127.0718],
+                {}
+            ).addTo(map_358d7f992864203232927bb47de14da2);
+        
+    
+            var icon_e04b3770141755f81da9a6e1818be9ef = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_3410df41c93465f8392fe632625e6b55.setIcon(icon_e04b3770141755f81da9a6e1818be9ef);
+        
+    
+        var popup_fcf2c3d5193890a65c56ed6587e906e3 = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_0e2205657eba24452d61df97e3c82798 = $(`<div id="html_0e2205657eba24452d61df97e3c82798" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/182fa075dbea4d03bfe2550fab7f332c' target='_blank'>(주)세코닉스</a></div>`)[0];
+                popup_fcf2c3d5193890a65c56ed6587e906e3.setContent(html_0e2205657eba24452d61df97e3c82798);
+            
+        
+
+        marker_3410df41c93465f8392fe632625e6b55.bindPopup(popup_fcf2c3d5193890a65c56ed6587e906e3)
+        ;
+
+        
+    
+    
+            var marker_a240af271991a0bcefc7076ffb6bf1ff = L.marker(
+                [36.95525, 126.8553],
+                {}
+            ).addTo(map_358d7f992864203232927bb47de14da2);
+        
+    
+            var icon_5b475b8fc15900ac9eba68489de89ec8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_a240af271991a0bcefc7076ffb6bf1ff.setIcon(icon_5b475b8fc15900ac9eba68489de89ec8);
+        
+    
+        var popup_a6371caaf3d9d2b68d241a9dbea95f6e = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_b52e3a515c4d9e08d1ad9cb15c987844 = $(`<div id="html_b52e3a515c4d9e08d1ad9cb15c987844" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/87df2a65e21d4b7f8ced539eb469ae0d' target='_blank'>에이치엘만도(주)</a></div>`)[0];
+                popup_a6371caaf3d9d2b68d241a9dbea95f6e.setContent(html_b52e3a515c4d9e08d1ad9cb15c987844);
+            
+        
+
+        marker_a240af271991a0bcefc7076ffb6bf1ff.bindPopup(popup_a6371caaf3d9d2b68d241a9dbea95f6e)
+        ;
+
+        
+    
+    
+            var marker_547cac01871e22707e2327beab3fb84b = L.marker(
+                [37.5651, 126.987],
+                {}
+            ).addTo(map_358d7f992864203232927bb47de14da2);
+        
+    
+            var icon_8afb68e710141f4bff2047b054276b3e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_547cac01871e22707e2327beab3fb84b.setIcon(icon_8afb68e710141f4bff2047b054276b3e);
+        
+    
+        var popup_f3ac939f61ff8847d860565b744f5fec = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_ed725d572a40d24039397b4649175be6 = $(`<div id="html_ed725d572a40d24039397b4649175be6" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/eeeeaf64f32c4224abccd47c47e6a1b7' target='_blank'>티맵모빌리티</a></div>`)[0];
+                popup_f3ac939f61ff8847d860565b744f5fec.setContent(html_ed725d572a40d24039397b4649175be6);
+            
+        
+
+        marker_547cac01871e22707e2327beab3fb84b.bindPopup(popup_f3ac939f61ff8847d860565b744f5fec)
+        ;
+
+        
+    
+    
+            var marker_6e1611d0259109839145040fce1ca444 = L.marker(
+                [37.40054, 127.1013],
+                {}
+            ).addTo(map_358d7f992864203232927bb47de14da2);
+        
+    
+            var icon_13ae051af9eeaa9d847fd21d613d76fb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_6e1611d0259109839145040fce1ca444.setIcon(icon_13ae051af9eeaa9d847fd21d613d76fb);
+        
+    
+        var popup_ed252fb558c6983cbffce6858f6609dc = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_958775864d0bcb949ff369cbb7f0d6e4 = $(`<div id="html_958775864d0bcb949ff369cbb7f0d6e4" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/b591cd3f410c4e66bd6de416dbb8d0cb' target='_blank'>(주)긴트</a></div>`)[0];
+                popup_ed252fb558c6983cbffce6858f6609dc.setContent(html_958775864d0bcb949ff369cbb7f0d6e4);
+            
+        
+
+        marker_6e1611d0259109839145040fce1ca444.bindPopup(popup_ed252fb558c6983cbffce6858f6609dc)
+        ;
+
+        
+    
+    
+            var marker_86a160dd879ce449396699677e874019 = L.marker(
+                [37.3935078942772, 126.959414289663],
+                {}
+            ).addTo(map_358d7f992864203232927bb47de14da2);
+        
+    
+            var icon_374d4f25800419c6f288e1a738ce6244 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_86a160dd879ce449396699677e874019.setIcon(icon_374d4f25800419c6f288e1a738ce6244);
+        
+    
+        var popup_556b09d0871d79f28094b75a22588aac = L.popup({"maxWidth": 450});
+
+        
+            
+                var html_1a5f64f7138eed33e999edffa57d1063 = $(`<div id="html_1a5f64f7138eed33e999edffa57d1063" style="width: 100.0%; height: 100.0%;"><a href='https://www.notion.so/62a6b6de43a34f1e9847b95b4fbc2a44' target='_blank'>엘에스오토모티브테크놀로지스</a></div>`)[0];
+                popup_556b09d0871d79f28094b75a22588aac.setContent(html_1a5f64f7138eed33e999edffa57d1063);
+            
+        
+
+        marker_86a160dd879ce449396699677e874019.bindPopup(popup_556b09d0871d79f28094b75a22588aac)
+        ;
+
+        
+    
+</script>
 </html>
